@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block login %}
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('about') }}">About Us</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">Therapy Team</a></li>
+    <li><a href="{{ url_for('treatment_services') }}">Treatment Service</a></li>
+    <li><a href="{{ url_for('rehabilitation_story') }}">Rehabilitation story</a></li>
+    <li><a href="{{ url_for('retail_store') }}">Retail Store</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">Online Shop</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">Login/SignUp</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block mainContent %}
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+
+    <div class="page-wrapper">
+        <div class="breadcumb-area-Team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcumb-wrap text-center">
+                            <h2>Medical Team</h2>
+                            <ul>
+                                <li>Home</li>
+                                <li><span>Medical Team</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .breadcumb-area end -->
+
+
+    <!-- start Project-section -->
+    <section class="project-section project-section-2 bg-animate-shape">
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px"
+                 viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#f8f8f8" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div class="section-title">
+                        <span>Our Star Doctors</span>
+                        <h2>Top Veterinaries</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div class="project-grids clearfix">
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/team/1.png') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>Zheng ZhiNong</h2>
+                                <span>General manager of Beijing company</span>
+                                <p>Skilled in all kinds of soft tissue surgery, bone surgery, spinal neurosurgery, etc.
+                                    He has worked as a veterinary physician for nearly 20 years. He loves his career and
+                                    never stopped learning. </p>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/team/2.png') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>Qu XiaoPing</h2>
+                                <span>Regional technical director</span>
+                                <p>He has published many articles in veterinary related journals and has been a lecturer
+                                    of small animal Congress for many times</p>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/team/3.png') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>Wen HaiTao</h2>
+                                <span>Tony</span>
+                                <p>
+                                    Good at internal medicine and geriatric diseases. He is a licensed veterinary
+                                    physician who is proficient in the diagnosis and treatment of internal medicine,
+                                    surgical diseases, pets and rare animals.</p>
+
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/team/4.png') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>Li Ye</h2>
+                                <span>Head of cat clinic of pet hospital</span>
+                                <p>
+                                    Patience and love for pets, responsibility and diligence for work. It is good at the
+                                    treatment of feline, internal medicine and dermatology
+                                </p>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/team/5.png') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>Meng YueSheng</h2>
+                                <span>General manager of Shanghai Branch
+                                </span>
+                                <p>In dog and cat internal medicine, infectious diseases, soft tissue surgery and other
+                                    difficult diseases have their own unique insights and superb technology</p>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/team/6.png') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h4>Chen GuoZhen</h4>
+                                <span>Medical management supervision</span>
+                                <p>He is committed to the study of canine and feline nephrology, cardiology. He gathered
+                                    many years of clinical experience was widely spread in the industry</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end container -->
+
+    </section>
+    <!-- end Project-section -->
+    <!-- start site-footer -->
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends 'staff_base.html' %}
+{% block staff_name%}
+    Staff User: {{ username }}
+{% endblock %}
+
+{% macro appointment(year,month,date,symptom,state) %}
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="service-section" >
+            <div class="services-wrapper">
+                <div class="contact-details">
+                    Date: <b>{{ year }}/{{ month }}/{{ date }}</b>
+                    <br>
+                    Symptom: <b>{{ symptom }}</b>
+                    <br>
+                    <b>{{ state }}</b>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endmacro %}
+
+{% block mainContent %}
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Pets Info<small></small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="modal-body">
+                            <form method="get" class="form-horizontal">
+                                <div class="form-group"><label class="col-sm-2 control-label">Appointment ID</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ id }}"></div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Customer Name</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ customer_name }}"></div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Pet Name</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ pet_name }}">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Pet Type</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ type }}">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Pet Age</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ age }}">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Pet Breed</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ breed }}">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Appointments History<small></small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="modal-body">
+                            {% for app in aapps %}
+                                {{ appointment(app.year,app.month,app.date,app.symptom,app.state) }}
+                            {% endfor %}
+                            <div class="clearfloat"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style type="text/css">
+        .ibox-content {
+            color: inherit;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            font-size: 1rem;
+            color: #6c6c6c;
+        }
+        body {
+            font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            color: #676a6c;
+        }
+        html {
+            font-size: 16px;
+        }
+        .service-section .services-wrapper {
+            text-Align: center;
+            margin-bottom: 30px;
+            background: #fff;
+            padding: 45px 45px 22px;
+            text-Align: center;
+            box-shadow: 0px 8px 17px 3px rgba(0, 0, 0, 0.06);
+        }
+        .clearfloat{clear:both;height:0;font-size: 1px;line-height: 0px;}
+    </style>
+{% endblock %}

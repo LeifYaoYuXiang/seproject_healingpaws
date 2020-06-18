@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+
+{% block login %}
+    <li><a href="{{ url_for('index_ch') }}">主页</a></li>
+    <li><a href="{{ url_for('about_ch') }}">关于我们</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">医疗团队</a></li>
+    <li><a href="{{ url_for('treatment_services') }}">医疗服务</a></li>
+    <li><a href="{{ url_for('rehabilitation_story') }}">康复故事</a></li>
+    <li><a href="{{ url_for('retail_store') }}">线下诊所</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">线上商店</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">退出登录</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">登录/注册</a></li>
+    {% endif %}
+{% endblock %}
+
+{% macro state_step_one(year, month, date, description) %}
+    <div class="vertical-timeline-block">
+        <div class="vertical-timeline-icon navy-bg">
+            <i class="fa fa-spinner text-info"></i>
+        </div>
+        <div class="vertical-timeline-content">
+            <h2>阶段 1: 等待</h2>
+            <p>{{ description }}</p>
+            <span class="vertical-date">{{ year }}<br/>
+                <small>{{ month }}/{{ date }}</small>
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro state_step_two(year, month, date, description) %}
+    <div class="vertical-timeline-block">
+        <div class="vertical-timeline-icon navy-bg">
+            <i class="fa fa-edit text-warning"></i>
+        </div>
+        <div class="vertical-timeline-content">
+            <h2>阶段 2: 治疗</h2>
+            <p>{{ description }}</p>
+            <span class="vertical-date">{{ year }}<br/>
+                <small>{{ month }}/{{ date }}</small>
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro state_step_three(year, month, date, description) %}
+    <div class="vertical-timeline-block">
+        <div class="vertical-timeline-icon navy-bg">
+            <i class="fa fa-angellist text-success"></i>
+        </div>
+        <div class="vertical-timeline-content">
+            <h2>阶段 3: 恢复</h2>
+            <p>{{ description }}</p>
+            <span class="vertical-date">{{ year }}<br/>
+                <small>{{ month }}/{{ date }}</small>
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+{% block mainContent %}
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="">
+                    <h3>预约信息<small></small></h3>
+                    <div class="hr-line-dashed"></div>
+                    <div>
+                        <form method="get" class="form-horizontal">
+                        <div class="form-group"><label class="col-sm-2 control-label">顾客名字</label>
+                            <div class="col-sm-10"><input type="text" class="form-control"
+                                                          disabled=""
+                                                          value="{{ customer_name }}">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">宠物名字</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" disabled=""
+                                value="{{ pet_name }}">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">宠物症状</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" disabled=""
+                                value="{{ symptom }}">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">城市</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" disabled=""
+                                value="{{ city }}">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">预约时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" disabled=""
+                                       value="{{ state_one_year }}/{{ state_one_month }}/{{ state_one_date }}">
+
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">阶段</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" disabled=""
+                                       value="{{ state }}">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                    </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="wrapper wrapper-content">
+        <div class="row animated fadeInRight">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+
+                    <div class="ibox-content" id="ibox-content">
+
+                        <div id="vertical-timeline" class="vertical-container dark-timeline center-orientation">
+                            {{ state_step_one(state_one_year,state_one_month,state_one_date,symptom) }}
+                            {% if state == '2' %}
+                                {{ state_step_two(state_two_year,
+                                                   state_two_month,
+                                                   state_two_date,
+                                                   state_two_description) }}
+                            {% elif state == '3' %}
+
+                                {{ state_step_two(state_two_year,
+                                                    state_two_month,
+                                                    state_two_date,
+                                                    state_two_description) }}
+                                {{ state_step_three(state_three_year,
+                                                    state_three_month,
+                                                    state_three_date,
+                                                    state_three_description) }}
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if state != '1' %}
+        <div class="wrapper wrapper-content">
+            <div class="row">
+                {#                <div class="col-lg-6">#}
+                {#                    <div class="ibox float-e-margins">#}
+                {#                        <div class="ibox-title">#}
+                {#                            <h5>Photo About Your Pet at this state</h5>#}
+                {#                        </div>#}
+                {#                        <div class="ibox-content">#}
+                {#                            <div class="carousel slide" id="carousel1">#}
+                {#                                <div class="carousel-inner">#}
+                {#                                    <div class="item active">#}
+                {#                                        <img alt="image" class="img-responsive" src="img/p_big3.jpg">#}
+                {#                                    </div>#}
+                {#                                    <div class="item">#}
+                {#                                        <img alt="image"  class="img-responsive" src="img/p_big1.jpg">#}
+                {#                                    </div>#}
+                {#                                    <div class="item ">#}
+                {#                                        <img alt="image" class="img-responsive" src="img/p_big2.jpg">#}
+                {#                                    </div>#}
+                {##}
+                {#                                </div>#}
+                {#                                <a data-slide="prev" href="#carousel1" class="left carousel-control">#}
+                {#                                    <span class="icon-prev"></span>#}
+                {#                                </a>#}
+                {#                                <a data-slide="next" href="#carousel1" class="right carousel-control">#}
+                {#                                    <span class="icon-next"></span>#}
+                {#                                </a>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>关于您的宠物在这个阶段的视频</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <figure>
+                                <iframe width="60%" height="349" src="{{ url }}" frameborder="0" allowfullscreen
+                                        style="margin-left: auto;margin-right: auto; display: block"></iframe>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+

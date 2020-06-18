@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block login %}
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('about') }}">About Us</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">Therapy Team</a></li>
+    <li><a href="{{ url_for('treatment_services') }}">Treatment Service</a></li>
+    <li><a href="{{ url_for('rehabilitation_story') }}">Rehabilitation story</a></li>
+    <li><a href="{{ url_for('retail_store') }}">Retail Store</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">Online Shop</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">Login/SignUp</a></li>
+    {% endif %}
+{% endblock %}
+
+{% macro social_feedback(subject,content,message_year,message_month,message_date,customer_name,staff_name,reply_year,reply_month,reply_date,reply_content,icon) %}
+    <div class="social-feed-box">
+        <div class="social-avatar">
+            <a class="pull-left">
+                <img alt="image" src="{{ url_for('static',filename=icon) }}">
+            </a>
+            <div class="media-body">
+                <a>
+                    {{ customer_name }}
+                </a>
+                <small class="text-muted">{{ message_date }}/{{ message_month }}/{{ message_year }}</small>
+            </div>
+        </div>
+        <div class="social-body">
+            <p><b>{{ subject }}</b></p>
+            <p>{{ content }}</p>
+        </div>
+        {% if reply_year != '' %}
+            <div class="social-footer">
+                <div class="social-comment">
+                    <a class="pull-left">
+                        <img alt="image" src="{{ url_for('static',filename='images/icon/doctor_icon.png') }}">
+                    </a>
+                <div class=" media-body">
+                        <a>{{ staff_name }}</a>
+                        {{ reply_content }}
+                        <br/>
+                        <small class="text-muted">{{ reply_date }}/{{ reply_month }}/{{ reply_year }}</small>
+                </div>
+            </div>
+            </div>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro recent_feedback(subject,feedback,feedback_year,feedback_month,feedback_date) %}
+    <li class="list-group-item">
+        <p><a class="text-info">@{{ subject }}</a> {{ feedback }}</p>
+        <small class="block text-muted"><i class="fa fa-clock-o"></i>{{ feedback_date }}/{{ feedback_month }}/{{ feedback_year }}</small>
+    </li>
+{% endmacro %}
+
+{% block mainContent %}
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+    <div class="breadcumb-area-messagesquare">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcumb-wrap text-center">
+                        <h2>Messages</h2>
+                        <ul>
+                            <li><a href="{{ url_for('index') }}">Home</a></li>
+                            <li><span>Messages</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="blog-single-section section-padding">
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px"
+                 viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-4">
+                    <div class="service-sidebar">
+                        <div class="widget all-services">
+                            <h3>Personal domain</h3>
+                            <ul>
+                                <li><a href="{{ url_for('personal_information') }}">Personal Information</a></li>
+                                <li><a href="{{ url_for('appointment') }}">Appointment</a></li>
+                                <li><a href="{{ url_for('message_square') }}">Message Square</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Recent Feedback</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content no-padding">
+                            <ul class="list-group">
+                                {% for feedback in feedbacks %}
+                                    {{ recent_feedback(
+                                            feedback.subject,
+                                            feedback.reply_content,
+                                            feedback.reply_year,
+                                            feedback.reply_month,
+                                            feedback.reply_date) }}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-8">
+                    <div class="blog-content clearfix">
+                        <div class="comments-area">
+                            <div class="comments-section">
+                                <h1 class="comments-title">Message Square</h1>
+                                <ol class="comments">
+                                    {% for messaeges in message_and_reply %}
+                                        {{ social_feedback(messaeges.subject,
+                                                    messaeges.content,
+                                                    messaeges.message_year,
+                                                    messaeges.message_month,
+                                                    messaeges.message_date,
+                                                    messaeges.customer_name,
+                                                    messaeges.staff_name,
+                                                    messaeges.reply_year,
+                                                    messaeges.reply_month,
+                                                    messaeges.reply_date,
+                                                    messaeges.reply_content,
+                                                    messaeges.icon
+                                        ) }}
+                                    {% endfor %}
+                                </ol>
+                            </div>
+
+                            <div class="comment-respond">
+                                <h3 class="comment-reply-title">Post Questions</h3>
+                                <form action="" method="post" novalidate>
+                                    {{ form.hidden_tag() }}
+                                    <div style="clear:left">
+                                        {{ form.subject.label }}
+                                        {{ form.subject(class="form-control") }}
+                                        {% for error in form.subject.errors %}
+                                        <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </div>
+                                    <br>
+                                    <div style="clear:left">
+                                        {{ form.content.label }}
+                                        {{ form.content(style="resize:none") }}
+                                        {% for error in form.content.errors %}
+                                        <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </div>
+                                    <div>
+                                        {{ form.submit() }}
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

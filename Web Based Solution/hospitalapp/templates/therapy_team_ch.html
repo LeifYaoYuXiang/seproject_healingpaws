@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block login %}
+    <li><a href="{{ url_for('index_ch') }}">主页</a></li>
+    <li><a href="{{ url_for('about_ch') }}">关于我们</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">医疗团队</a></li>
+    <li><a href="{{ url_for('treatment_services') }}">医疗服务</a></li>
+    <li><a href="{{ url_for('rehabilitation_story') }}">康复故事</a></li>
+    <li><a href="{{ url_for('retail_store') }}">线下诊所</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">线上商店</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">退出登录</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">登录/注册</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block mainContent %}
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+
+    <div class="page-wrapper">
+        <div class="breadcumb-area-Team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcumb-wrap text-center">
+                            <h2>医疗团队</h2>
+                            <ul>
+                                <li>主页</li>
+                                <li><span>医疗团队</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .breadcumb-area end -->
+
+
+    <!-- start Project-section -->
+    <section class="project-section project-section-2 bg-animate-shape">
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px"
+                 viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#f8f8f8" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div class="section-title">
+                        <span>我们的星级医师</span>
+                        <h2>顶级兽医</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div class="project-grids clearfix">
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/team/1.png') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>郑志农</h2>
+                                <span>北京公司总经理</span>
+                                <p>擅长各种软组织手术、骨外科、脊柱神经外科等。
+                                他做兽医已经将近20年了。他热爱自己的事业
+                                从未停止学习。 </p>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/team/2.png') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>屈小平</h2>
+                                <span>区域医疗技术指导</span>
+                                <p>他在兽医相关期刊上发表了许多文章，并担任讲师，且多次参加全国性动物大会。</p>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/team/3.png') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>文海涛</h2>
+                                <span>医疗技术专家</span>
+                                <p>擅长内科和宠物老年病。他是个有耐心，精致的兽医，精通内科诊疗的医师，外科疾病，研究宠物以及稀有动物多年。</p>
+
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/team/4.png') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>李烨</h2>
+                                <span>宠物医院猫科门诊主任</span>
+                                <p>
+                                    对宠物的耐心和爱，对工作的责任和勤奋。它擅长猫的治疗、内科和皮肤科。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/team/5.png') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>门月升</h2>
+                                <span>上海分公司总经理
+                                </span>
+                                <p>在猫狗内科、传染病、软组织外科等疑难病有自己独特的见解和高超的技术。</p>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/team/6.png') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>陈国振</h2>
+                                <span>医疗管理监督员</span>
+                                <p>他致力于犬和猫的肾脏病，心脏病的研究。他聚集在一起多年的临床经验在业内广为传播。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end container -->
+
+    </section>
+    <!-- end Project-section -->
+    <!-- start site-footer -->
+{% endblock %}

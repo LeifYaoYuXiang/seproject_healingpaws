@@ -1,0 +1,187 @@
+{% extends 'staff_base.html' %}
+{% block staff_name%}
+    Staff User: {{ username }}
+{% endblock %}
+
+{% macro state_step_one(year, month, date, description) %}
+    <div class="vertical-timeline-block">
+        <div class="vertical-timeline-icon navy-bg">
+            <i class="fa fa-spinner text-info"></i>
+        </div>
+        <div class="vertical-timeline-content">
+            <h2>State 1: Waiting</h2>
+            <p>{{ description }}</p>
+            <span class="vertical-date">{{ year }}<br/>
+                <small>{{ month }}/{{ date }}</small>
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro state_step_two(year, month, date, description) %}
+    <div class="vertical-timeline-block">
+        <div class="vertical-timeline-icon navy-bg">
+            <i class="fa fa-edit text-warning"></i>
+        </div>
+        <div class="vertical-timeline-content">
+            <h2>State 2: Curing</h2>
+            <p>{{ description }}</p>
+            <span class="vertical-date">{{ year }}<br/>
+                <small>{{ month }}/{{ date }}</small>
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro state_step_three(year, month, date, description) %}
+    <div class="vertical-timeline-block">
+        <div class="vertical-timeline-icon navy-bg">
+            <i class="fa fa-angellist text-success"></i>
+        </div>
+        <div class="vertical-timeline-content">
+            <h2>State 3: Recovering</h2>
+            <p>{{ description }}</p>
+            <span class="vertical-date">{{ year }}<br/>
+                <small>{{ month }}/{{ date }}</small>
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+
+
+{% block mainContent %}
+    <div class="wrapper wrapper-content">
+        <div class="row animated fadeInRight">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+
+                    <div class="ibox-content" id="ibox-content">
+
+                        <div id="vertical-timeline" class="vertical-container dark-timeline center-orientation">
+                            {{ state_step_one(state_one_year,state_one_month,state_one_date,symptom) }}
+                            {% if state == '2' %}
+                                {{ state_step_two(state_two_year,
+                                                   state_two_month,
+                                                   state_two_date,
+                                                   state_two_description) }}
+                            {% elif state == '3' %}
+
+                                {{ state_step_two(state_two_year,
+                                                    state_two_month,
+                                                    state_two_date,
+                                                    state_two_description) }}
+                                {{ state_step_three(state_three_year,
+                                                    state_three_month,
+                                                    state_three_date,
+                                                    state_three_description) }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Pets Info<small></small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="modal-body">
+                            <form method="get" class="form-horizontal">
+                                <div class="form-group"><label class="col-sm-2 control-label">Appointment ID</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ id }}"></div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Customer Name</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ customer_name }}"></div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Pet Name</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ pet_name }}">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Pet
+                                    Symptoms</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ symptom }}">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">City</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ city }}">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                            </form>
+                        </div>
+                        {% if state != '3' %}
+                            <div class="text-center">
+                                <a data-toggle="modal" class="btn btn-primary" href="#modal-form">Change State</a>
+                            </div>
+                            <div id="modal-form" class="modal fade" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <form role="form">
+
+                                                    </form>
+                                            <form class="form-horizontal" action="" method="post" novalidate>
+                                                {{ form.hidden_tag() }}
+                                                <div class="form-group">
+                                                    <label> Description</label>
+                                                    {{ form.description(class="form-control") }}
+                                                    <div class="hr-line-dashed"></div>
+
+
+                                                <label> URL for Shot Video</label>
+                                                    <br/>
+                                                    You can shot one video of this pet and upload it onto youtube.
+                                                    After uploading, your video will have the its own url.
+                                                    For example, the URL for the promotion Video is <a href="https://www.youtube.com/watch?v=qrD5SyYb1Ck">"https://www.youtube.com/watch?v=<b>qrD5SyYb1Ck</b>"</a>
+                                                    You can put the<b>qrD5SyYb1Ck</b> into the following blank such that customer can see the video on their pages.<br>
+                                                    Suggest the default value for the blank is: <b>qrD5SyYb1Ck</b>
+                                                    {{ form.url(class="form-control") }}
+                                                    <div class="hr-line-dashed"></div>
+
+
+                                                 <div class="col-sm-4 col-sm-offset-4">
+                                                     {{ form.submit(class="btn btn-primary") }}
+                                                 </div>
+                                            </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="text-center">
+                                <a data-toggle="modal" class="btn btn-primary" href="#modal-form" disabled="">Chang State</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

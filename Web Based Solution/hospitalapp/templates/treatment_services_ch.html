@@ -1,0 +1,389 @@
+{% extends "base.html" %}
+
+{% block login %}
+    <li><a href="{{ url_for('index_ch') }}">主页</a></li>
+    <li><a href="{{ url_for('about_ch') }}">关于我们</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">医疗团队</a></li>
+    <li><a href="{{ url_for('treatment_services_ch') }}">医疗服务</a></li>
+    <li><a href="{{ url_for('rehabilitation_story_ch') }}">康复故事</a></li>
+    <li><a href="{{ url_for('retail_store') }}">线下诊所</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">线上商店</a></li>
+
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">退出登录</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">登录/注册</a></li>
+    {% endif %}
+
+{% endblock %}
+
+
+{% block mainContent %}
+    <!-- .breadcumb-area start -->
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+    <div class="breadcumb-area-treatmentservices">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcumb-wrap text-center">
+                        <h2>医疗服务</h2>
+                        <ul>
+                            <li>主页</li>
+                            <li><span>医疗服务</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- start Project-section -->
+    <section class="project-section project-section-2 bg-animate-shape">
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#f8f8f8" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div class="section-title">
+                        <span>我们做什么</span>
+                        <h2>我们的医疗服务</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div class="project-grids clearfix">
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/medical-services/1.jpg') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>软组织外科</h2>
+                                <span>我们有很多在软组织手术方面成熟的专家。</span>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/medical-services/2.jpg') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>骨科</h2>
+                                <span>我们有丰富的骨外科经验，提供完善的服务</span>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/medical-services/3.jpg') }}" alt>
+                            </div>
+                            <div class=" project-content ">
+                                <h2>内科</h2>
+                                <span>我们已成为内科转诊中心医院。</span>
+                            </div>
+                        </div>
+                        <div class="grid ">
+                            <div class="entry-media ">
+                                <img src="{{ url_for('static',filename='images/medical-services/4.png') }}" alt>
+                            </div>
+                            <div class="project-content ">
+                                <h2>心脏科</h2>
+                                <span>我们有一个专业的心脏病医疗团队为宠物提供准确的诊断。</span>
+                            </div>
+                        </div>
+                        <div class="grid ">
+                            <div class="entry-media ">
+                                <img src="{{ url_for('static',filename='images/medical-services/5.jpg') }}" alt>
+                            </div>
+                            <div class="project-content ">
+                                <h2>老年病科</h2>
+                                <span>我们有多年的临床经验，先进的诊断和治疗，以保护宠物的健康。</span>
+                            </div>
+                        </div>
+                        <div class="grid ">
+                            <div class="entry-media ">
+                                <img src="{{ url_for('static',filename='images/medical-services/6.png') }}" alt>
+                            </div>
+                            <div class="project-content ">
+                                <h2>皮肤科</h2>
+                                <span>我们的专业医生精确地为宠物制定治疗计划，以恢复健康。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+
+    </section>
+    <!-- end Project-section -->
+
+
+    <!-- start project-single-section 1.0 -->
+    <section class="project-one-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-8">
+                    <div class="project-content">
+                        <div class="img-holder">
+                            <img src="{{ url_for('static',filename='images/medical-services/1.jpg') }}" alt>
+                        </div>
+                        <h2 class="title">软组织外科</h2>
+                        <p class="content">软组织是连接、支撑或包围其他身体部位和器官的组织。
+                            此外，软组织包括肌腱、韧带、膜、纤维组织、脂肪、滑膜、肌肉、神经和血管。
+                            因此，软组织疾病的治疗可能需要手术，如常见的软组织手术、尿道吻合术、会阴疝修补术等。
+                            HealingPaws有许多专家谁是成熟的软组织手术。</p>
+                    </div>
+                </div>
+                <div class="col col-md-4">
+                    <div class="service-sidebar">
+                        <div class="widget project-info-widget">
+                            <h3 class="title">部门信息</h3>
+                            <ul>
+                                <li><span>部门名称: </span> 软组织外科</li>
+                                <li><span>负责人: </span> 郑志农医生</li>
+                                <li><span>成立时间: </span> 2019/4/1</li>
+                                <li><span>服务: </span> 常见的软组织手术、尿道吻合术、会阴疝修补术等</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+    </section>
+    <!-- end project-single-section -->
+
+
+
+    <!-- start project-single-section 2.0 -->
+    <section class="project-one-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-8">
+                    <div class="project-content">
+                        <div class="img-holder">
+                            <img src="{{ url_for('static',filename='images/medical-services/2.jpg') }}" alt>
+                        </div>
+                        <h2 class="title">骨科</h2>
+                        <p>随着宠物走进人们的身边，宠物已经成为家庭的一员。
+                            由交通事故、咬伤和高空坠落引起的骨折病例在临床上也越来越多。
+                            骨折后，宠物主人愿意让宠物接受良好的治疗。
+                            HealingPaws拥有一支骨科宠物专家团队，他们从事小动物骨科手术多年。
+                            掌握精湛的诊疗技术，引进先进设备。
+                            在恒温手术台和无菌手术室对所有患病动物进行仔细检查，术前进行血液生化和血液分析检测，及时发现宠物的各种功能变化，
+                            为手术麻醉、麻醉药品提供科学依据均为进口麻醉或呼吸麻醉，可根据宠物的实际情况选择。愈合爪具有丰富的骨外科经验和成功案例，
+                            为您的宠物提供完善的手术服务和有力的保障。</p>
+                    </div>
+                </div>
+                <div class="col col-md-4">
+                    <div class="service-sidebar">
+                        <div class="widget project-info-widget">
+                            <h3 class="title">部门信息</h3>
+                            <ul>
+                                <li><span>部门名称: </span> 骨科</li>
+                                <li><span>负责人: </span> 屈小平医生</li>
+                                <li><span>成立时间: </span> 2019/4/2</li>
+                                <li><span>服务: </span> 为宠物提供骨折治疗服务</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+    </section>
+    <!-- end project-single-section -->
+
+
+
+    <!-- start project-single-section 3.0 -->
+    <section class="project-one-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-8">
+                    <div class="project-content">
+                        <div class="img-holder">
+                            <img src="{{ url_for('static',filename='images/medical-services/3.jpg') }}" alt>
+                        </div>
+                        <h2 class="title">内科</h2>
+                        <p>包括脏腑、心、肝、脾、肺、肾等均在宠物内科体检范围内。
+                            借助生化分析仪、内分泌分析仪、超声波、数字X射线、核磁共振等全套专业检测设备，并与心脏病学、神经病学、影像学、肿瘤学等其他科室协同会诊，
+                            提供强有力的内科支持。他在呼吸道、消化道、泌尿系统、老年综合性疾病等的诊治方面具有丰富的经验和专业素养
+                        </p>
+                    </div>
+                </div>
+                <div class="col col-md-4">
+                    <div class="service-sidebar">
+                        <div class="widget project-info-widget">
+                            <h3 class="title">部门信息</h3>
+                            <ul>
+                                <li><span>部门名称: </span> 内科</li>
+                                <li><span>负责人: </span> 文海涛医生</li>
+                                <li><span>成立时间: </span> 2019/4/3</li>
+                                <li><span>服务: </span> 包括脏腑心肝脾肺肾内科体检</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+    </section>
+    <!-- end project-single-section -->
+
+
+
+    <!-- start project-single-section 4.0 -->
+    <section class="project-one-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-8">
+                    <div class="project-content">
+                        <div class="img-holder">
+                            <img src="{{ url_for('static',filename='images/medical-services/4.png') }}" alt>
+                        </div>
+                        <h2 class="title">心脏科</h2>
+                        <p>心血管系统是维持生命活动的重要器官。它主要参与血液循环的代谢，与其他系统密切相关。
+                            心血管系统原发性疾病虽然不多，但不可避免地会引起其他系统的功能障碍。其他系统疾病常影响心血管系统的功能。
+                            某些种类的宠物，以及8岁以上的宠物，更容易患心血管系统疾病。
+                            HealingPaws心专家配备心脏专用听诊器、血压计、数字X光诊断系统、大型彩超诊断系统等高端设备，以及专业的心脏专家医疗团队支持，为宠物提供准确的诊疗和贴心服务
+                        </p>
+                    </div>
+                </div>
+                <div class="col col-md-4">
+                    <div class="service-sidebar">
+                        <div class="widget project-info-widget">
+                            <h3 class="title">部门信息</h3>
+                            <ul>
+                                <li><span>部门名称: </span> 心脏科</li>
+                                <li><span>负责人: </span> 李烨医生</li>
+                                <li><span>成立时间: </span> 2019/4/4</li>
+                                <li><span>服务: </span> 为宠物提供心脏病诊疗服务</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+    </section>
+    <!-- end project-single-section -->
+
+
+    <!-- start project-single-section 5.0 -->
+    <section class="project-one-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-8">
+                    <div class="project-content">
+                        <div class="img-holder">
+                            <img src="{{ url_for('static',filename='images/medical-services/5.jpg') }}" alt>
+                        </div>
+                        <h2 class="title">老年病科</h2>
+                        <p>一般来说，宠物在7岁以后就会进入老年。
+                            血糖水平、肝肾功能、骨骼状况等与宠物的健康状况密切相关。
+                            许多潜在的疾病，如癌症、肝肾疾病、心脏病、口腔疾病、关节疾病、肥胖引起的糖尿病等，都会接踵而来，对宠物的生命构成威胁。
+                            因此，建议宠物或患有慢性病的老年猫狗每6个月进行一次体检。
+                            HealingPaws有多年的临床经验，专业的医生和先进的诊断和治疗技术，以保护宠物的健康。
+                        </p>
+                    </div>
+                </div>
+                <div class="col col-md-4">
+                    <div class="service-sidebar">
+                        <div class="widget project-info-widget">
+                            <h3 class="title">部门信息</h3>
+                            <ul>
+                                <li><span>部门名称: </span> 老年病科</li>
+                                <li><span>负责人: </span> 门月升医生</li>
+                                <li><span>成立时间: </span> 2019/4/5</li>
+                                <li><span>服务: </span> 为宠物慢性病提供诊疗服务</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                        <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                            z"/>
+                       </svg>
+        </div>
+    </section>
+    <!-- end project-single-section -->
+
+
+
+    <!-- start project-single-section 6.0 -->
+    <section class="project-one-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-8">
+                    <div class="project-content">
+                        <div class="img-holder">
+                            <img src="{{ url_for('static',filename='images/medical-services/6.png') }}" alt>
+                        </div>
+                        <h2 class="title">皮肤科</h2>
+                        <p>宠物容易感染皮肤病，包括细菌性皮肤病、
+                            真菌性皮肤病、螨虫和其他皮肤寄生虫感染、过敏性皮肤病、角化病和脂溢性皮肤病、自身免疫性皮肤病、内分泌性皮肤病、先天性和后天性脱毛、
+                            色素异常，以及其他复杂顽固的皮肤病。
+                            HealingPaws专业医生检查一般犬猫全身皮肤疾病检查包括跳蚤梳、透明带、拔毛、刮涂、刮涂染色、木灯、细针抽吸、细菌或真菌培养、
+                            皮肤活检、过敏检查、血液学检查等，以便准确地作出为头发的儿童制定的治疗计划并恢复健康。
+                        </p>
+                    </div>
+                </div>
+                <div class="col col-md-4">
+                    <div class="service-sidebar">
+                        <div class="widget project-info-widget">
+                            <h3 class="title">部门信息</h3>
+                            <ul>
+                                <li><span>部门名称: </span> 皮肤科</li>
+                                <li><span>负责人: </span> 陈国振医生</li>
+                                <li><span>成立时间: </span> 2019/4/6</li>
+                                <li><span>服务: </span> 为宠物提供皮肤病诊疗服务</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                        <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                            z"/>
+                       </svg>
+        </div>
+    </section>
+    <!-- end project-single-section -->
+{% endblock %}

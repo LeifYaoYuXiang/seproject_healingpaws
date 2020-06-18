@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block login %}
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('about') }}">About Us</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">Therapy Team</a></li>
+    <li><a href="{{ url_for('treatment_services') }}">Treatment Service</a></li>
+    <li><a href="{{ url_for('rehabilitation_story') }}">Rehabilitation story</a></li>
+    <li><a href="{{ url_for('retail_store') }}">Retail Store</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">Online Shop</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">Login/SignUp</a></li>
+    {% endif %}
+{% endblock %}
+{% block mainContent %}
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+
+    <!-- .breadcumb-area start -->
+        <div class="breadcumb-area-story">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcumb-wrap text-center">
+                            <h2>Rehabilitation story</h2>
+                            <ul>
+                                <li>Home</li>
+                                <li><span>Rehabilitation story</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .breadcumb-area end -->
+
+
+        <!-- start about-section 1.0 -->
+        <section class="about-section-s2">
+            <div class="content-area">
+                <div class="left-content">
+                    <img src="{{url_for('static',filename='images/story/img_story_2.jpg')}}" alt>
+                </div>
+                <div class="right-content">
+                    <div class="about-content">
+                        <div class="section-title-s2">
+                            <span>Nemo:</span>
+                            <h2>The things I've regained my ability to run freely.</h2>
+                        </div>
+                        <div class="details">
+                            <p>More than a month ago, dog Nemo suddenly couldn't walk. His owner immediately took him to the hospital for examination. He flew from Jinan to Beijing and went to several hospitals for treatment, injection and medicine. But
+                                half a month later, Nemo still couldn't walk, and his symptoms didn't get better. And Nemo had a bag on his handsome back. Biochemical examination showed that Nemo had anemia, abnormal liver function and liver failure.
+                            </p>
+                            <p>Our attending doctor personally operated on Nemo successfully. After the operation, the hospital monitored the physical condition of Nemo for 24 hours, and gave health ball exercise; acupuncture, shock wave therapy "spa". After
+                                a period of treatment at the HealingPaws Hospital, Nemo's mood and body improved day by day. And restored to its former glory. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ab-svg_color">
+                <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#f8f8f8" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+            </div>
+        </section>
+        <!-- end about-section -->
+
+        <!-- start about-section 2.0 -->
+        <section class="about-section-s2">
+            <div class="content-area">
+                <div class="left-content">
+                    <img src="{{url_for('static',filename='images/story/img_story_1.jpg')}}" alt>
+                </div>
+                <div class="right-content">
+                    <div class="about-content">
+                        <div class="section-title-s2">
+                            <span>Lucky:</span>
+                            <h2>Naughty Lucky and "lucky" Lucky</h2>
+                        </div>
+                        <div class="details">
+                            <p>
+                                Lucky's little Corgi, though only six months old, is a real "devil of the mixed world". At home, he is lively like a rabbit, living is a leader of the demolition team, and even the 40kg big dog at home has to give in. During a chase with Alaska, lucky
+                                accidentally bumped his head into the car. After the accident, the owner found that lucky couldn't stand up and was paralyzed. The situation was very critical.
+                            </p>
+                            <p>
+                                After MRI, doctors found that there were suspected bone fragments embedded in the cervical vertebra (C1 Atlas), combined with the main complaint and clinical examination, doctors initially diagnosed lucky as spinal cord contusion caused by impact. After
+                                communicating with lucky's owner, doctors decided to perform a ventral slot operation on lucky's neck. During the operation, TCM students successfully removed several small bone fragments from the atlas. On the sixth day
+                                after surgery, lucky was able to stand up on his own, his diet and drinking water were basically back to normal, and he was back to the devil king. It's just around the corner~
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ab-svg_color">
+                <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#f8f8f8" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+            </div>
+        </section>
+        <!-- end about-section -->
+
+{% endblock %}

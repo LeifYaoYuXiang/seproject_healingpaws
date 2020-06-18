@@ -1,0 +1,159 @@
+{% extends "staff_base.html" %}
+{% block staff_name%}
+    Staff User: {{ username }}
+{% endblock %}
+
+{% macro appointment_detail(id,customer_name,pet_name,symptom,status,state,year,month,date)%}
+        <tr>
+            <td>{{ id }}</td>
+            <td><a href="{{ url_for('appointment_detail_staff',id=id) }}">{{ pet_name }}</a></td>
+            <td>{{ customer_name }}</td>
+            <td>{{ status }}</td>
+            <td>{{ month }}  {{ date }}, {{ year }}</td>
+            <td>{{ symptom }}</td>
+            <td><strong>State: {{ state }}</strong></td>
+            {% if state == 1 %}
+                <td><i class="fa fa-exclamation text-danger"></i></td>
+            {% elif state ==2 %}
+                <td><i class="fa fa-dot-circle-o text-warning"></i></td>
+            {% else %}
+                <td><i class="fa fa-check text-navy"></i></td>
+            {% endif %}
+        </tr>
+{% endmacro %}
+
+{% macro pet_detail(pet_id,customer_name,pet_name,type,age,breed)%}
+        <tr>
+            <td>{{ pet_id }}</td>
+            <td><a href="{{ url_for('staff_petinfo',id=pet_id) }}">{{ pet_name }}</a></td>
+            <td>{{ customer_name }}</td>
+            <td>{{ type }}</td>
+            <td>{{ age }}</td>
+            <td>{{ breed }}</td>
+        </tr>
+{% endmacro %}
+
+{% block mainContent %}
+    <div class="row  border-bottom white-bg dashboard-header">
+        <div class="col-sm-3">
+            <h2>Slogan</h2>
+            <ul class="list-group clear-list m-t">
+                <li class="list-group-item fist-item">
+                    <span class="label label-success">1</span>Good Services=High Efficiency.
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-info">2</span>Sharp strategy.
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-primary">3</span>Concentration=Success.
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-default">4</span> Honest to serve users.
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-primary">5</span> Keep Innovation.
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <div class="flot-chart dashboard-chart">
+                <div class="flot-chart-content" id="flot-dashboard-chart"></div>
+            </div>
+            <h3>Recent 7 Days Appointments</h3>
+            <div class="row text-left">
+                <div class="col-xs-4">
+                    <div class=" m-l-md">
+                        <span class="h4 font-bold m-t block">{{ num0e }}</span>
+                        <small class="text-muted m-b block">Today <br/>Emergency</small>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <span class="h4 font-bold m-t block">{{ num0s }}</span>
+                    <small class="text-muted m-b block">Today <br/>Standard</small>
+                </div>
+                <div class="col-xs-4">
+                    <span class="h4 font-bold m-t block">{{ unread }} </span>
+                    <small class="text-muted m-b block">Today <br/>Message</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="statistic-box">
+                <h4>Statistics</h4>
+                <div class="row text-center">
+                    <div class="col-lg-6">
+                        <canvas id="polarChart" width="80" height="80"></canvas>
+                        <h5>Dogs and Cats</h5>
+                    </div>
+                     <div class="col-lg-6">
+                        <canvas id="doughnutChart" width="78" height="78"></canvas>
+                         <h5 >Emergency and Standard</h5>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <h5>Appointment</h5>
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <td>id</td>
+                                <td>pet name</td>
+                                <td>customer name</td>
+                                <td>status </td>
+                                <td>appointment time</td>
+                                <td>symptom</td>
+                                <td>state</td>
+                                <td></td>
+                            </tr>
+                            {% for appointment in appointments_array %}
+                                {{ appointment_detail(
+                                            appointment.id,
+                                            appointment.customer_name,
+                                            appointment.pet_name,
+                                            appointment.symptom,
+                                            appointment.status,
+                                            appointment.state,
+                                            appointment.year,
+                                            appointment.month,
+                                            appointment.date)
+                                }}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <h5>Pet</h5>
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <td>id</td>
+                                <td>pet name</td>
+                                <td>customer name</td>
+                                <td>type </td>
+                                <td>age</td>
+                                <td>breed</td>
+                            </tr>
+                            {% for pet in pets_array %}
+                                {{ pet_detail(
+                                            pet.pet_id,
+                                            pet.customer_name,
+                                            pet.pet_name,
+                                            pet.type,
+                                            pet.age,
+                                            pet.breed)
+                                }}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

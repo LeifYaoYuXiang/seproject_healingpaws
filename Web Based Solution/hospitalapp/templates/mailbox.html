@@ -1,0 +1,72 @@
+{% extends "staff_base.html" %}
+{% block staff_name%}
+    Staff User: {{ username }}
+{% endblock %}
+
+{% macro mail_entity(id,subject,year,month,date,name) %}
+    <tr class="read">
+        <td class="check-mail">
+            <input type="checkbox" class="i-checks">
+        </td>
+        <td class="mail-ontact"><a href="{{ url_for('mail_detail',id=id) }}">{{ name }}</a></td>
+        <td class="mail-subject"><a href="{{ url_for('mail_detail',id=id) }}">{{ subject }}</a></td>
+        <td class="text-right mail-date">{{ year }}/{{ month }}/{{ date }}</td>
+    </tr>
+{% endmacro %}
+
+{% macro read_message(id,subject,year,month,date,name) %}
+    <tr class="read">
+        <td class="check-mail">
+            <input type="checkbox" class="i-checks">
+        </td>
+        <td class="mail-ontact">{{ name }}</td>
+        <td class="mail-subject">{{ subject }}</td>
+        <td class="text-right mail-date">{{ year }}/{{ month }}/{{ date }}&nbsp;&nbsp;<b>Replied</b></td>
+    </tr>
+{% endmacro %}
+
+{% block mainContent %}
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="animated fadeInRight">
+                <div class="mail-box-header">
+                    <h2>
+                        <span class="nav-label">Mailbox</span><span
+                            class="label label-warning pull-right">Unread Messages: {{ size }}</span>
+                    </h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+                    </div>
+                </div>
+                <div class="mail-box">
+                    <table class="table table-hover table-mail">
+                        <tbody>
+{#                        {% for messages in allmessages %}#}
+                        {% for unread_m in unread_messages %}
+                                    {{ mail_entity(unread_m.id,
+                                           unread_m.subject,
+                                           unread_m.message_year,
+                                           unread_m.message_month,
+                                           unread_m.message_date,
+                                           unread_m.customer_name) }}
+                        {% endfor %}
+                        {% for read_m in read_messages %}
+                                    {{ read_message(read_m.id,
+                                           read_m.subject,
+                                           read_m.message_year,
+                                           read_m.message_month,
+                                           read_m.message_date,
+                                           read_m.customer_name) }}
+                        {% endfor %}
+{#                        {% endfor %}#}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div>
+            <strong>Copyright</strong> HealingPaws &copy; 2020
+        </div>
+    </div>
+{% endblock %}

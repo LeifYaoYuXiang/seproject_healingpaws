@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block login %}
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('about') }}">About Us</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">Therapy Team</a></li>
+    <li><a href="{{ url_for('treatment_services') }}">Treatment Service</a></li>
+    <li><a href="{{ url_for('rehabilitation_story') }}">Rehabilitation story</a></li>
+    <li><a href="{{ url_for('retail_store') }}">Retail Store</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">Online Shop</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">Login/SignUp</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block mainContent %}
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+<!-- .breadcumb-area start -->
+        <div class="breadcumb-area-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcumb-wrap text-center">
+                            <h2>Retail Store</h2>
+                            <ul>
+                                <li>Home</li>
+                                <li><span>Retail Store</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .breadcumb-area end -->
+
+        <!-- start blog-section -->
+        <section class="blog-section blog-section-3 bg-animate-shape">
+            <div class="ab-svg_color">
+                <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#f8f8f8" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="section-title">
+                            <span>Retail_Store</span>
+                            <h2>Our Stores</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-12 recent-Blog-thumbs">
+                        <div class="recent-Blog-thumbs-outer">
+                            <div class="recent-blog-thumb active-thumb ct-m" data-case="#blog-content-1">
+                                <div class="img-holder">
+                                    <img src="{{url_for('static',filename='images/blog/1.png')}}" alt>
+                                </div>
+                                <div class="overlay-text">
+                                    <div class="text-inner">
+                                        <h3>Beijing</h3>
+                                        <h3>Location: 10 PingLeYuan Street</h3>
+                                        <h3>Phone: 86-186-1237-1721</h3>
+                                        <h3>Email: bdic@ucdconnect.ie</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recent-blog-thumb" data-case="#blog-content-2">
+                                <div class="img-holder">
+                                    <img src="{{url_for('static',filename='images/blog/2.jpg')}}" alt>
+                                </div>
+                                <div class="overlay-text">
+                                    <div class="text-inner">
+                                        <h3>Chengdu</h3>
+                                        <h3>Location: 15 Panda Street</h3>
+                                        <h3>Phone: 86-321-7654-1098</h3>
+                                        <h3>Email: ucdbdicbjut@qq.com</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recent-blog-thumb ct-t" data-case="#blog-content-3">
+                                <div class="img-holder">
+                                    <img src="{{url_for('static',filename='images/blog/3.png')}}" alt>
+                                </div>
+                                <div class="overlay-text">
+                                    <div class="text-inner">
+                                        <h3>Shanghai</h3>
+                                        <h3>Location: 50 LuJiaZui Street</h3>
+                                        <h3>Phone: 86-123-4567-8910</h3>
+                                        <h3>Email: ucd@ucdconnect.ie</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-12 recent-Blog-content">
+                        <div class="recent-Blog-content-outer">
+                            <div class="recent-blog-data active-blog-data" id="blog-content-1">
+                                <h3><a href="#">Sub-company in Beijing</a></h3>
+                                <p style="font-size: 16px;">Since November 1, 2017, the Beijing pet diagnosis and treatment center of heating paws has officially opened 24 hours a day to protect the health of pet.
+                                    After the decoration and upgrading, the hospital now has all kinds of professional diagnosis and treatment instruments: Lycra microscope, digital image system,
+                                    respiratory anesthesia machine, Mindray B-ultrasound machine, blood pressure meter, biochemical analyzer and other conventional detection equipment.
+                                    In addition, the hospital implements information-based management, and will establish pet's life-long health records for all pets, and regularly carry out health
+                                    return visit to pet.</p>
+                                <!-- <a href="#" class="theme-btn">Blog Details</a> -->
+                            </div>
+                            <div class="recent-blog-data" id="blog-content-2">
+                                <h3><a href="#">Sub-company in Chengdu</a></h3>
+                                <p style="font-size: 16px;">Heating paws Chengdu pet diagnosis and treatment center is the first small animal general diagnosis and treatment center and referral center in Southwest China with international
+                                    advanced medical equipment and professional service standards. The hospital process is scientific and rigorous, the diagnosis and treatment environment
+                                    is comfortable and safe, and the dogs and cats are managed and treated in different areas, focusing on providing brand-new animal diagnosis and treatment experience
+                                    and large-scale clinical application management. At the same time, it also undertakes the training of students' practice and practicing veterinary doctors in some
+                                    agricultural colleges. The diagnosis and treatment center gathers a number of senior small animal doctors for consultation, provides domestic professional clinical
+                                    diagnosis and treatment services for small animals, and redefines the dignity and value of each small life.</p>
+                                <!-- <a href="#" class="theme-btn">Blog Details</a> -->
+                            </div>
+                            <div class="recent-blog-data" id="blog-content-3">
+                                <h3><a href="#">Sub-company in Shanghai</a></h3>
+                                <p style="font-size: 16px;">Healing paws Shanghai Pet diagnosis and treatment center not only provides all-round pet health and diagnosis and treatment services,
+                                    but also focuses on the development of animal bone surgery, neurosurgery and other characteristic departments.
+                                    In order to better treat orthopedic diseases, we have introduced various kinds of diagnosis and treatment equipment, such as C-arm,
+                                    ultrasonic bone knife, tplo bone plate system, PrCl advanced locking bone plate system, etc.
+                                    At the same time, we also equipped with the rare MRI equipment in Shanghai pet hospital. With MRI, doctors can check the pathological organs in pets more accurately and improve the treatment accuracy.</p>
+                                <!-- <a href="#" class="theme-btn">Blog Details</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-t-lg">
+                    <div class="col-lg-12">
+                        <div class="ibox-content">
+                            <div id="world-map" style="height: 300px; width: 1150px; "></div>
+                        </div>
+                        <script src="https://webapi.amap.com/maps?v=1.4.15&key=cd81642023571a6269470c1784debfb9"></script>
+                        <script>
+                            //初始化地图
+                            var map = new AMap.Map('world-map', {
+                                resizeEnable: true, //是否监控地图容器尺寸变化
+                                mapStyle: "amap://styles/whitesmoke"
+                            });
+                        </script>
+                        <style>
+                            #container {
+                                width: 50%;
+                                height: 100%;
+                            }
+                        </style>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end blog-section -->
+
+{% endblock %}

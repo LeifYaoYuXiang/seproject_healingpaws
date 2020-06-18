@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% block login %}
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('about') }}">About Us</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">Therapy Team</a></li>
+    <li><a href="{{ url_for('treatment_services') }}">Treatment Service</a></li>
+    <li><a href="{{ url_for('rehabilitation_story') }}">Rehabilitation story</a></li>
+    <li><a href="{{ url_for('retail_store') }}">Retail Store</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">Online Shop</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">Login/SignUp</a></li>
+    {% endif %}
+{% endblock %}
+
+{% macro state_step_one(year, month, date, description) %}
+    <div class="vertical-timeline-block">
+        <div class="vertical-timeline-icon navy-bg">
+            <i class="fa fa-spinner text-info"></i>
+        </div>
+        <div class="vertical-timeline-content">
+            <h2>State 1: Waiting</h2>
+            <p>{{ description }}</p>
+            <span class="vertical-date">{{ year }}<br/>
+                <small>{{ month }}/{{ date }}</small>
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro state_step_two(year, month, date, description) %}
+    <div class="vertical-timeline-block">
+        <div class="vertical-timeline-icon navy-bg">
+            <i class="fa fa-edit text-warning"></i>
+        </div>
+        <div class="vertical-timeline-content">
+            <h2>State 2: Curing</h2>
+            <p>{{ description }}</p>
+            <span class="vertical-date">{{ year }}<br/>
+                <small>{{ month }}/{{ date }}</small>
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro state_step_three(year, month, date, description) %}
+    <div class="vertical-timeline-block">
+        <div class="vertical-timeline-icon navy-bg">
+            <i class="fa fa-angellist text-success"></i>
+        </div>
+        <div class="vertical-timeline-content">
+            <h2>State 3: Recovering</h2>
+            <p>{{ description }}</p>
+            <span class="vertical-date">{{ year }}<br/>
+                <small>{{ month }}/{{ date }}</small>
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+{% block mainContent %}
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="">
+                    <h3>Appointment Detail<small></small></h3>
+                    <div class="hr-line-dashed"></div>
+                    <div>
+                        <form method="get" class="form-horizontal">
+                            <div class="form-group"><label class="col-sm-2 control-label">Customer
+                                Name</label>
+                                <div class="col-sm-10"><input type="text" class="form-control"
+                                                              disabled=""
+                                                              value="{{ customer_name }}">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group"><label class="col-sm-2 control-label">Pet
+                                Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" disabled=""
+                                           value="{{ pet_name }}">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group"><label class="col-sm-2 control-label">Pet
+                                Symptoms</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" disabled=""
+                                           value="{{ symptom }}">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group"><label class="col-sm-2 control-label">City</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" disabled=""
+                                           value="{{ city }}">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group"><label class="col-sm-2 control-label">Appointment
+                                Time</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" disabled=""
+                                           value="{{ state_one_year }}/{{ state_one_month }}/{{ state_one_date }}">
+
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group"><label class="col-sm-2 control-label">State</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" disabled=""
+                                           value="{{ state }}">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-content">
+        <div class="row animated fadeInRight">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+
+                    <div class="ibox-content" id="ibox-content">
+
+                        <div id="vertical-timeline" class="vertical-container dark-timeline center-orientation">
+                            {{ state_step_one(state_one_year,state_one_month,state_one_date,symptom) }}
+                            {% if state == '2' %}
+                                {{ state_step_two(state_two_year,
+                                                   state_two_month,
+                                                   state_two_date,
+                                                   state_two_description) }}
+                            {% elif state == '3' %}
+
+                                {{ state_step_two(state_two_year,
+                                                    state_two_month,
+                                                    state_two_date,
+                                                    state_two_description) }}
+                                {{ state_step_three(state_three_year,
+                                                    state_three_month,
+                                                    state_three_date,
+                                                    state_three_description) }}
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if state != '1' %}
+        <div class="wrapper wrapper-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Video About Your Pet On this State</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <figure>
+                                <iframe width="60%" height="349" src="{{ url }}" frameborder="0" allowfullscreen
+                                        style="margin-left: auto;margin-right: auto; display: block"></iframe>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
+

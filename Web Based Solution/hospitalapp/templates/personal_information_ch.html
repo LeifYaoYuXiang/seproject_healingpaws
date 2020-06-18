@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% block login %}
+       <li><a href="{{ url_for('index_ch') }}">主页</a></li>
+    <li><a href="{{ url_for('about_ch') }}">关于我们</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">医疗团队</a></li>
+    <li><a href="{{ url_for('treatment_services_ch') }}">医疗服务</a></li>
+    <li><a href="{{ url_for('rehabilitation_story_ch') }}">康复故事</a></li>
+    <li><a href="{{ url_for('retail_store') }}">线下诊所</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">线上商店</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information_ch') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">退出登录</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">登录/注册</a></li>
+    {% endif %}
+{% endblock %}
+
+{% macro pet_Info(type,name,age,breed) %}
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="service-section">
+            <div class="services-wrapper">
+                <div class="contact-details">
+                    <h3>{{ type }}</h3>
+                    <h4>姓名: <b>{{ name }}</b></h4>
+                    <h4>年龄: <b>{{ age }}</b></h4>
+                    <h4>品种: <b>{{ breed }}</b></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% block mainContent %}
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+    <div class="breadcumb-area-personalinformation">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcumb-wrap text-center">
+                        <h2>个人中心</h2>
+                        <ul>
+                            <li><a href="{{ url_for('index_ch') }}">主页</a></li>
+                            <li><span>个人中心</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="service-single-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-12">
+                    <div class="col col-md-4">
+                        <div class="service-sidebar">
+                            <div class="widget all-services">
+                                <h3>个人空间</h3>
+                                <ul>
+                                    <li><a href="{{ url_for('personal_information') }}">个人资料</a></li>
+                                    <li><a href="{{ url_for('appointment') }}">预约信息</a></li>
+                                    <li><a href="{{ url_for('message_square') }}">消息广场</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-8">
+                        <div class="row m-b-lg m-t-lg">
+                            <div class="col-md-6">
+                                <div class="profile-image">
+                                    <img src="{{ url_for('static',filename=icon) }}" class="img-circle circle-border m-b-md" alt="profile">
+                                </div>
+                                <div class="profile-info">
+                                    <div class="">
+                                        <div>
+                                            <h2 class="no-margins">
+                                                {{ username }}
+                                            </h2>
+                                            <h4>
+                                                邮箱: {{ email }}
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <table class="table small m-b-xs">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>{{ dog_num }}</strong>   狗
+                                        </td>
+                                        <td>
+                                            <strong>{{ cat_num }}</strong>   猫
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <legend></legend>
+                        <div class="section-title-s3 section-title-s5">
+                            <h2>宠物信息</h2>
+                        </div>
+                        {% for pet in pets %}
+                            {{ pet_Info(pet.type,pet.name,pet.age,pet.breed) }}
+                        {% endfor %}
+                    </div>
+                    <div class="col col-md-12">
+                        <div class="contact-form-area">
+                            <div class="section-title-s3 section-title-s5">
+                                <legend></legend>
+                                <h2>在此添加你的宠物信息</h2>
+                            </div>
+                            <div class="contact-form">
+                                <form action="" method="post" novalidate>
+                                    {{ form.hidden_tag() }}
+                                    <div style="clear:left">
+                                        {{ form.type.label }}
+                                        {{ form.type(class="form-control") }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form.name.label }}
+                                        {{ form.name(class="form-control") }}
+                                        {% for error in form.name.errors %}
+                                        <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form.age.label }}
+                                        {{ form.age(class="form-control") }}
+                                        {% for error in form.age.errors %}
+                                        <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form.breed.label }}
+                                        {{ form.breed(class="form-control") }}
+                                        {% for error in form.breed.errors %}
+                                        <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </div>
+                                    <P>{{ form.submit(class="btn btn-primary block full-width m-b") }}</P>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div> <!-- end container -->
+        <div class="ab-svg_color">
+            <svg enable-background="new 0 0 1920 289" viewBox="0 0 1920 289"
+                 x="0px" xml:space="preserve" y="0px">
+                <path d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z" fill="#fff"/>
+               </svg>
+        </div>
+    </section>
+
+{% endblock %}

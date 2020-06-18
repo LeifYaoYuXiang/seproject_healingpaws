@@ -1,0 +1,321 @@
+{% extends "base.html" %}
+
+{% block login %}
+    <li><a href="{{ url_for('index_ch') }}">主页</a></li>
+    <li><a href="{{ url_for('about_ch') }}">关于我们</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">医疗团队</a></li>
+    <li><a href="{{ url_for('treatment_services_ch') }}">医疗服务</a></li>
+    <li><a href="{{ url_for('rehabilitation_story') }}">康复故事</a></li>
+    <li><a href="{{ url_for('retail_store') }}">线下诊所</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">线上商店</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">退出登录</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">登录/注册</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block mainContent %}
+     <!-- start of hero -->
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+
+    <section class="hero hero-slider-wrapper hero-style-1 hero-style-2">
+            <div class="hero-slider">
+                <div class="slide">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col col-lg-6 col-sm-8 slide-caption">
+                                <div class="slide-title">
+                                    <h2>中国最好的宠物医院</h2>
+                                </div>
+                                <div class="slide-subtitle">
+                                    <p>重新定义每一个小生命的尊严和价值，以保护爱和爱的健康</p>
+                                </div>
+                                <div class="btns">
+                                    <a href="{{ url_for('about') }}" class="theme-btn">了解更多</a>
+                                </div>
+                                <div class="slider-pic">
+                                    <img src="{{url_for('static',filename='images/slider/cat.png')}}" alt>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col col-lg-6 col-sm-8 slide-caption">
+                                <div class="slide-title">
+                                    <h2>这让人放心，因为它是严格的</h2>
+                                </div>
+                                <div class="slide-subtitle">
+                                    <p>在中国，我们一直在寻找一种能为宠物提供更好医疗保护的方法。</p>
+                                </div>
+                                <div class="btns">
+                                    <a href="{{url_for('about')}}" class="theme-btn">了解更多</a>
+                                </div>
+                                <div class="slider-pic slider-pic-2">
+                                    <img src="{{ url_for('static',filename='images/slider/dog.png') }}" alt>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- end of hero slider -->
+
+    <!-- start about-section -->
+    <section class="about-section-s2">
+        <div class="content-area">
+                <div class="left-content">
+                    <img src="{{ url_for('static',filename='images/about_us.png') }}" alt>
+                </div>
+                <div class="right-content">
+                    <div class="about-content">
+                        <div class="section-title-s2">
+                            <span>关于我们</span>
+                            <h2></h2>
+                        </div>
+                        <div class="details">
+                            <p>长期致力于推动我国宠物医疗事业的发展，本着“严谨、放心”、“亲情关怀”的宗旨，服务将贴心专业，为宠物提供人性化、高品质的健康服务体验</p>
+                            <div class="dots-section">
+                                <span>超过200万注册宠物拥有者和企业覆盖多个城市</span>
+                                <span>已成为互联网宠物药的知名品牌。</span>
+                                <span>这是一个由来已久的事实</span>
+                            </div>
+                            <a href="{{ url_for('about') }}" class="theme-btn">更多的关于我们</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="ab-svg_color">
+                <svg x="0px" y="0px"
+                  viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#f8f8f8" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+            </div>
+    </section>
+    <!-- end about-section -->
+
+    <!--service-area start -->
+    <div class="service-area bg-animate-shape ptb-100-70">
+            <div class="ab-color_svg ab-svg_color">
+                <svg x="0px" y="0px"
+                viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+            </div>
+            <div class="container">
+                    <div class="col-12">
+                        <div class="section-title text-center">
+                            <h2>我们最好的服务</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="service-section">
+                                <div class="services-wrapper">
+                                    <div class="services-icon-wrapper">
+                                        <i class="fi flaticon-chart"></i>
+                                    </div>
+                                    <div class="service-content">
+                                        <h2>软组织外科</h2>
+                                        <p>我们有很多在软组织手术方面成熟的专家。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="service-section">
+                                <div class="services-wrapper">
+                                    <div class="services-icon-wrapper">
+                                        <i class="fi flaticon-computer"></i>
+                                    </div>
+                                    <div class="service-content">
+                                        <h2>骨科</h2>
+                                        <p> 我们拥有丰富的骨外科经验，提供完善的服务。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="service-section">
+                                <div class="services-wrapper">
+                                    <div class="services-icon-wrapper">
+                                        <i class="fi flaticon-money"></i>
+                                    </div>
+                                    <div class="service-content">
+                                        <h2>内科</h2>
+                                        <p>我们已成为内科转诊中心医院，非常非常的优秀</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="service-section">
+                                <div class="services-wrapper">
+                                    <div class="services-icon-wrapper">
+                                        <i class="fi flaticon-objective"></i>
+                                    </div>
+                                    <div class="service-content">
+                                        <h2>心脏科</h2>
+                                        <p>我们有专业的心脏病医疗团队为宠物提供准确的诊断</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="service-section">
+                                <div class="services-wrapper">
+                                    <div class="services-icon-wrapper">
+                                        <i class="fi flaticon-bullhorn"></i>
+                                    </div>
+                                    <div class="service-content">
+                                        <h2>老年病科</h2>
+                                        <p>我们有多年的临床经验，先进的诊断和治疗，以保护宠物的健康。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="service-section">
+                                <div class="services-wrapper">
+                                    <div class="services-icon-wrapper">
+                                        <i class="fi flaticon-startup"></i>
+                                    </div>
+                                    <div class="service-content">
+                                        <h2>皮肤科</h2>
+                                        <p>我们的专业医生准确地为宠物制定治疗计划，以恢复健康。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    <!--end service-area-->
+
+     <!-- counter-area start -->
+    <div class="counter-area">
+            <div class="ab-color_svg ab-svg_color-m">
+                <svg x="0px" y="0px"
+                viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+           </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="counter-grids">
+                            <div class="grid">
+                                <div>
+                                    <h2><span class="odometer" data-count="799">00</span>+</h2>
+                                </div>
+                                <p>医生</p>
+                            </div>
+                            <div class="grid grid-2">
+                                <div>
+                                    <h2><span class="odometer" data-count="180">00</span>W+</h2>
+                                </div>
+                                <p>临床病例</p>
+                            </div>
+                            <div class="grid grid-4">
+                                <div>
+                                    <h2><span class="odometer" data-count="30000">00</span>+</h2>
+                                </div>
+                                <p>客户信函</p>
+                            </div>
+                            <div class="grid grid-3">
+                                <div>
+                                    <h2><span class="odometer" data-count="399">00</span>W+</h2>
+                                </div>
+                                <p>康复案例</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- counter-area end -->
+
+    <!-- testimonial-area start -->
+    <div class="testimonial-area">
+            <div class="ab-color_svg ab-svg_color-m">
+                <svg x="0px" y="0px"
+                viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="section-title">
+                            <span>我们是谁？</span>
+                            <h2>我们的专家</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-active owl-carousel">
+                    <div class="testimonial-wrap">
+                        <div class="testimonial-item">
+                            <div class="testimonial-content">
+                                <p>从事兽医外科教学和科研工作43年。他是我国小动物临床诊疗的重要奠基人。</p>
+                            </div>
+                            <div class="testimonial-sub">
+                                <div class="testimonial-img">
+                                    <img src="{{ url_for('static',filename='images/testimonials/houjiafa.jpg') }}" alt="">
+                                </div>
+                                <div class="testimonial-tumb-content">
+                                    <h4>侯佳峰</h4>
+                                    <span>医学技术委员会首席专家</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-wrap">
+                        <div class="testimonial-item">
+                            <div class="testimonial-content">
+                                <p>徐国兴帮助无数瘫痪动物再次站起来奔跑。在我国，小动物神经外科的发展开辟了一个新的领域。</p>
+                            </div>
+                            <div class="testimonial-sub">
+                                <div class="testimonial-img">
+                                    <img src="{{ url_for('static',filename='images/testimonials/xuguoxing.jpg') }}" alt="">
+                                </div>
+                                <div class="testimonial-tumb-content">
+                                    <h4>徐国兴</h4>
+                                    <span>技术委员会委员</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="testimonial-wrap">
+                        <div class="testimonial-item">
+                            <div class="testimonial-content">
+                                <p>中国动物医生的杰出代表之一。2015年，裴增阳博士在杭州创办了派希德动物医院，聚集了一批优秀的青年动物医生</p>
+                            </div>
+                            <div class="testimonial-sub">
+                                <div class="testimonial-img">
+                                    <img src="{{ url_for('static',filename='images/testimonials/peizengyang.jpg') }}" alt="">
+                                </div>
+                                <div class="testimonial-tumb-content">
+                                    <h4>裴增阳</h4>
+                                    <span>医学技术委员会首席专家</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- testimonial-area end -->
+
+
+{% endblock %}

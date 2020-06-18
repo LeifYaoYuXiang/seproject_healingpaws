@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% block login %}
+    <li><a href="{{ url_for('index_ch') }}">主页</a></li>
+    <li><a href="{{ url_for('about_ch') }}">关于我们</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">医疗团队</a></li>
+    <li><a href="{{ url_for('treatment_services_ch') }}">医疗服务</a></li>
+    <li><a href="{{ url_for('rehabilitation_story_ch') }}">康复故事</a></li>
+    <li><a href="{{ url_for('retail_store') }}">线下诊所</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">线上商店</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">退出登录</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">登录/注册</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block mainContent %}
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+	 <div class="breadcumb-area-about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcumb-wrap text-center">
+                            <h2 style="color: black">关于我们</h2>
+                            <ul>
+                                <li>主页</li>
+                                <li style="color: forestgreen;"><span>关于我们</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+     </div>
+
+    <!-- bradcam_area_end -->
+
+    <!-- pet_care_area_start  -->
+    <div class="pet_care_area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-6">
+                    <div class="pet_thumb">
+                        <img src="{{url_for('static',filename='images/about/pet_care.png')}}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1 col-md-6">
+                    <div class="pet_info">
+                        <div class="section_title">
+                            <h1 class="a-title"><span>我们照顾您的宠物 </span> <br>
+                                就像您自己照顾一样</h1>
+                             <div class="content">当您的宠物生病或不适时，您可以选择HealingPaws。
+                                 不要担心你的宠物得不到很好的照顾，更不要担心你的宠物因为复杂的疾病而无法得到及时的治疗。
+                                 本着“严谨、放心”的宗旨，我们拥有数十年的宠物行业管理和运营经验，
+                                 以宠物为家庭成员，为宠物提供全面、科学、透明的医疗服务，重新定义每一个小生命的尊严和价值。
+                                 我们的服务涵盖专业动物医疗诊疗、宠物基本免疫和驱虫、体检保健、健康美容等多个领域，
+                                 以“家”为关怀，让服务更贴心专业，为宠物提供人性化、高品质的健康服务体验。
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- pet_care_area_end  -->
+
+    <!-- adapt_area_start  -->
+    <div class="adapt_area">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-5">
+                    <div class="adapt_help">
+                        <div class="section_title">
+                            <h1 class="a-title"><span>我们有足够的效率</span>
+                                <hr>
+                                能帮到你的宠物很多
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="adapt_about">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single_adapt text-center">
+                                    <img src="{{url_for('static',filename='images/adapt_icon/1.png')}}" alt="">
+                                    <div class="grid">
+                                <div>
+                                    <h2><span class="odometer" data-count="132">00</span>+</h2>
+                                </div>
+                                <h2>提供营养食品</h2>
+                            </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single_adapt text-center">
+                                    <img src="{{url_for('static',filename='images/adapt_icon/3.png')}}" alt="">
+                                     <div class="grid">
+                                <div>
+                                    <h2><span class="odometer" data-count="50">00</span>+</h2>
+                                </div>
+                                <h2>可用设备</h2>
+                                </div>
+                                <div class="single_adapt text-center">
+                                    <img src="{{url_for('static',filename='images/adapt_icon/2.png')}}" alt="">
+                                     <div class="grid">
+                                <div>
+                                    <h2><span class="odometer" data-count="100">00</span>+</h2>
+                                </div>
+                                <h2>兽医</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- adapt_area_end  -->
+
+    <!-- team_area_start  -->
+    <div class="team_area">
+        <div class="container">
+            <div class="row justify-content-center ">
+                <div class="col-lg-6 col-md-10">
+                    <div class="section_title text-center mb-95">
+                        <h1 class="a-title">我们的资源</h1>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_team">
+                        <div class="thumb">
+                            <img src="{{url_for('static',filename='images/about/home.png')}}" alt="">
+                        </div>
+                        <div class="member_name text-center">
+                            <div class="mamber_inner" >
+                                <h2 class=“a-title”>获得荣誉</h2>
+                                <p class=“content”>温馨舒适的家居环境，定期对房间进行清洁消毒，做好日常防护。
+                                    <b><i>因为我们的护理和专业，Healing Paws获得了很多荣誉：</i></b></p>
+                                <p class=“content”><ul class=“content”>
+                                <ol>中国年度优秀雇主</ol>
+                                <ol>亚洲优秀宠物医疗单位</ol>
+                                <ol>优秀公益合伙人</ol>
+                                <ol>优秀宠物店</ol>
+                            </ul></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_team">
+                        <div class="thumb">
+                            <img src="{{url_for('static',filename='images/about/care.png')}}" >
+                        </div>
+                        <div class="member_name text-center">
+                            <div class="mamber_inner">
+                                <h2 class=“a-title”>护理和治疗</h2>
+                    <p class=“content”><b><i>Healing Paws</i></b>
+                        引进国际先进的宠物医疗设备，如核磁共振、核磁共振、CT、莫勒手术显微镜、德国小动物Drager呼吸麻醉机、
+                        意大利百胜MyLab彩超、意大利technix悬浮式C臂等，还配备了一批国内罕见的10000级层流净化手术室。
+                        为消费者的宠物提供更安全可靠的科学诊断，有效保证宠物的耐受性和治疗成功率！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_team">
+                        <div class="thumb">
+                            <img src="{{url_for('static',filename='images/about/treatment.png')}}" alt="">
+                        </div>
+                        <div class="member_name text-center">
+                            <div class=“mamber_inner”>
+                                <h2 class=“a-title”>专业医疗团队</h2>
+                                <p class=“content”>医疗团队由一个由教授、院长和医生组成的医疗专家委员会领导。
+                                    有许多年轻的精英医生，他们有丰富的临床经验和高超的医疗技能。所有医生都必须持证上岗。
+                                    助理兽医毕业于动物医学相关专业</p>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+    <!-- team_area_start  -->
+{% endblock %}

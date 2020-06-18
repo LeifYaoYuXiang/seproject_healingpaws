@@ -1,0 +1,438 @@
+{% extends "base.html" %}
+
+{% block login %}
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('about') }}">About Us</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">Therapy Team</a></li>
+    <li><a href="{{ url_for('treatment_services') }}">Treatment Service</a></li>
+    <li><a href="{{ url_for('rehabilitation_story') }}">Rehabilitation story</a></li>
+    <li><a href="{{ url_for('retail_store') }}">Retail Store</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">Online Shop</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">Login/SignUp</a></li>
+    {% endif %}
+{% endblock %}
+
+
+{% block mainContent %}
+    <!-- .breadcumb-area start -->
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+    <div class="breadcumb-area-treatmentservices">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcumb-wrap text-center">
+                        <h2>Medical Services</h2>
+                        <ul>
+                            <li>Home</li>
+                            <li><span>Medical Services</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .breadcumb-area end -->
+
+
+    <!-- start Project-section -->
+    <section class="project-section project-section-2 bg-animate-shape">
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#f8f8f8" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div class="section-title">
+                        <span>What We Do</span>
+                        <h2>Our Medical Services</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div class="project-grids clearfix">
+                        <div class="grid">
+                            <div class="entry-media">
+
+                                <img src="{{ url_for('static',filename='images/medical-services/1.jpg') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>Soft Tissue Surgery</h2>
+                                <span>We have many experts who are mature in soft tissue surgery.</span>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/medical-services/2.jpg') }}" alt>
+                            </div>
+                            <div class="project-content">
+                                <h2>Orthopaedics</h2>
+                                <span>We have rich experience in bone surgery, providing perfect services.</span>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="entry-media">
+                                <img src="{{ url_for('static',filename='images/medical-services/3.jpg') }}" alt>
+                            </div>
+                            <div class=" project-content ">
+                                <h2>Internal Medicine</h2>
+                                <span>We have become a referral center hospital in internal medicine.</span>
+                            </div>
+                        </div>
+                        <div class="grid ">
+                            <div class="entry-media ">
+                                <img src="{{ url_for('static',filename='images/medical-services/4.png') }}" alt>
+                            </div>
+                            <div class="project-content ">
+                                <h2>Cardiology Department</h2>
+                                <span>We have a professional heart disease medical team to provide accurate diagnosis for pets.</span>
+                            </div>
+                        </div>
+                        <div class="grid ">
+                            <div class="entry-media ">
+                                <img src="{{ url_for('static',filename='images/medical-services/5.jpg') }}" alt>
+                            </div>
+                            <div class="project-content ">
+                                <h2>Geriatrics Department</h2>
+                                <span>We have many years of clinical experience, advanced diagnosis and treatment to protect pet's health.</span>
+                            </div>
+                        </div>
+                        <div class="grid ">
+                            <div class="entry-media ">
+                                <img src="{{ url_for('static',filename='images/medical-services/6.png') }}" alt>
+                            </div>
+                            <div class="project-content ">
+                                <h2>Dermatological</h2>
+                                <span>Our medical professional doctors accurately make treatment plans for pets to restore health.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+
+    </section>
+    <!-- end Project-section -->
+
+
+    <!-- start project-single-section 1.0 -->
+    <section class="project-one-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-8">
+                    <div class="project-content">
+                        <div class="img-holder">
+                            <img src="{{ url_for('static',filename='images/medical-services/1.jpg') }}" alt>
+                        </div>
+                        <h2 class="title">Soft Tissue Surgery</h2>
+                        <p class="content">Soft tissue is the tissue that connects, supports or surrounds other body parts and organs.
+                            In addition, soft tissue includes tendon, ligament, membrane, fibrous tissue, fat, synovium,
+                            muscle, nerve and blood vessel. Therefore,
+                            the treatment of soft tissue diseases may require surgery, such as common soft tissue
+                            surgery, urethrostomy, perineal hernia repair. Healing Paws has many experts who are mature
+                            in soft tissue surgery.</p>
+                    </div>
+                </div>
+                <div class="col col-md-4">
+                    <div class="service-sidebar">
+                        <div class="widget project-info-widget">
+                            <h3 class="title">Department Information</h3>
+                            <ul>
+                                <li><span>Department Name: </span> Soft Tissue Surgery</li>
+                                <li><span>Department Head: </span> Dr Zheng ZhiNong</li>
+                                <li><span>Date of Establishment: </span> 2019/4/1</li>
+                                <li><span>Department Value:</span> Best service for pets</li>
+                                <li><span>Services: </span> Common soft tissue surgery, urethrostomy, perineal hernia repair</li>
+                                <li><span>Customer Satisfaction: </span> Over 90%</li>
+                                <!-- <li><span>live link : </span> <a href="#">http://demo.com</a> </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+    </section>
+    <!-- end project-single-section -->
+
+
+
+    <!-- start project-single-section 2.0 -->
+    <section class="project-one-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-8">
+                    <div class="project-content">
+                        <div class="img-holder">
+                            <img src="{{ url_for('static',filename='images/medical-services/2.jpg') }}" alt>
+                        </div>
+                        <h2 class="title">Orthopaedics</h2>
+                        <p>With the pet walking into people's side, pet has become a member of the family. The fracture
+                            cases caused by traffic accident, bite and high-altitude fall are also increasing in clinic.
+                            After the fracture, the pet owner is
+                            willing to let the pet receive good treatment. Healing Paws has a team of orthopedic pet
+                            experts who have been engaged in small animal orthopedic operations for many years. They
+                            master superb diagnosis and treatment technology
+                            and introduce advanced equipment. All the sick animals will be carefully examined in the
+                            constant temperature operating table and sterile operating room, and blood biochemical and
+                            blood analysis tests will be carried out
+                            before the operation, so as to discover all kinds of functional changes of pets in time and
+                            provide scientific basis for operation anesthesia , anesthesia drugs are imported or
+                            respiratory anesthesia, according to the actual
+                            situation of pet to choose. Healing Paws has rich experience and successful cases in bone
+                            surgery, providing perfect operation service and strong guarantee for your pet.</p>
+                    </div>
+                </div>
+                <div class="col col-md-4">
+                    <div class="service-sidebar">
+                        <div class="widget project-info-widget">
+                            <h3 class="title">Department Information</h3>
+                            <ul>
+                                <li><span>Department Name: </span> Orthopaedics</li>
+                                <li><span>Department Head: </span> Dr Qu XiaoPing</li>
+                                <li><span>Date of Establishment: </span> 2019/4/2</li>
+                                <li><span>Department Value:</span> Best service for pets</li>
+                                <li><span>Services: </span> Provide fracture treatment services for pets</li>
+                                <li><span>Customer Satisfaction: </span> Over 90%</li>
+                                <!-- <li><span>live link : </span> <a href="#">http://demo.com</a> </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+    </section>
+    <!-- end project-single-section -->
+
+
+
+    <!-- start project-single-section 3.0 -->
+    <section class="project-one-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-8">
+                    <div class="project-content">
+                        <div class="img-holder">
+                            <img src="{{ url_for('static',filename='images/medical-services/3.jpg') }}" alt>
+                        </div>
+                        <h2 class="title">Internal Medicine</h2>
+                        <p>Including viscera, heart, liver, spleen, lung and kidney are all within the scope of pet
+                            internal medicine physical examination. With the help of complete professional testing
+                            equipment, such as biochemical analyzer, endocrine
+                            analyzer, ultrasound, digital X-ray, nuclear magnetic resonance, etc., and with the
+                            collaborative consultation of other departments, such as cardiology, neurology, imaging,
+                            oncology, strong internal medicine support is
+                            provided. He has rich experience and professional accomplishment in diagnosis and treatment
+                            of respiratory tract, digestive tract, urinary system, elderly Comprehensive diseases, etc.
+                        </p>
+                    </div>
+                </div>
+                <div class="col col-md-4">
+                    <div class="service-sidebar">
+                        <div class="widget project-info-widget">
+                            <h3 class="title">Department Information</h3>
+                            <ul>
+                                <li><span>Department Name: </span> Internal Medicine</li>
+                                <li><span>Department Head: </span> Dr Wen HaiTao</li>
+                                <li><span>Date of Establishment: </span> 2019/4/3</li>
+                                <li><span>Department Value:</span> Best service for pets</li>
+                                <li><span>Services: </span> Including viscera, heart, liver, spleen, lung and kidney internal medicine physical examination</li>
+                                <li><span>Customer Satisfaction: </span> Over 90%</li>
+                                <!-- <li><span>live link : </span> <a href="#">http://demo.com</a> </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+    </section>
+    <!-- end project-single-section -->
+
+
+
+    <!-- start project-single-section 4.0 -->
+    <section class="project-one-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-8">
+                    <div class="project-content">
+                        <div class="img-holder">
+                            <img src="{{ url_for('static',filename='images/medical-services/4.png') }}" alt>
+                        </div>
+                        <h2 class="title">Cardiology Department</h2>
+                        <p>Cardiovascular system is an important organ to maintain life activities. It is mainly
+                            involved in the metabolism of blood circulation, so it is closely related to other systems.
+                            Although the primary disease of cardiovascular
+                            system is not many, it will inevitably cause dysfunction of other systems. Other system
+                            diseases often affect the function of cardiovascular system. Some pets of certain species,
+                            and those over 8 years old, are more likely
+                            to suffer from cardiovascular system. Healing Paws heart specialist is equipped with
+                            high-end equipment such as special stethoscope for heart, sphygmomanometer, digital X-ray
+                            diagnosis system, large-scale color ultrasound
+                            diagnosis system, as well as professional heart specialist medical team support to provide
+                            accurate diagnosis and treatment and intimate services for pets.
+                        </p>
+                    </div>
+                </div>
+                <div class="col col-md-4">
+                    <div class="service-sidebar">
+                        <div class="widget project-info-widget">
+                            <h3 class="title">Department Information</h3>
+                            <ul>
+                                <li><span>Department Name: </span> Cardiology Department</li>
+                                <li><span>Department Head: </span> Dr Li Ye</li>
+                                <li><span>Date of Establishment: </span> 2019/4/4</li>
+                                <li><span>Department Value:</span> Best service for pets</li>
+                                <li><span>Services: </span> Provide diagnosis and treatment services for pets in terms of heart disease</li>
+                                <li><span>Customer Satisfaction: </span> Over 90%</li>
+                                <!-- <li><span>live link : </span> <a href="#">http://demo.com</a> </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+    </section>
+    <!-- end project-single-section -->
+
+
+    <!-- start project-single-section 5.0 -->
+    <section class="project-one-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-8">
+                    <div class="project-content">
+                        <div class="img-holder">
+                            <img src="{{ url_for('static',filename='images/medical-services/5.jpg') }}" alt>
+                        </div>
+                        <h2 class="title">Geriatrics Department</h2>
+                        <p>Generally, pets will enter the old age after the age of 7. Blood glucose level, liver and
+                            kidney function, bone condition, etc. are closely related to the health status of pets. Many
+                            potential diseases, such as cancer, liver
+                            and kidney disease, heart disease, oral disease, joint disease and diabetes caused by
+                            obesity, will come one after another, which is a threat to pet's life. Therefore, it is
+                            recommended that pets or elderly dogs and cats
+                            with chronic diseases have a physical examination every 6 months. Healing Paws has many
+                            years of clinical experience, professional doctors and advanced diagnosis and treatment
+                            technology to protect pet's health.
+                        </p>
+                    </div>
+                </div>
+                <div class="col col-md-4">
+                    <div class="service-sidebar">
+                        <div class="widget project-info-widget">
+                            <h3 class="title">Department Information</h3>
+                            <ul>
+                                <li><span>Department Name: </span> Geriatrics Department</li>
+                                <li><span>Department Head: </span> Dr Meng YueSheng</li>
+                                <li><span>Date of Establishment: </span> 2019/4/5</li>
+                                <li><span>Department Value:</span> Best service for pets</li>
+                                <li><span>Services: </span> Provide diagnosis and treatment services for pets with chronic diseases</li>
+                                <li><span>Customer Satisfaction: </span> Over 90%</li>
+                                <!-- <li><span>live link : </span> <a href="#">http://demo.com</a> </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                        <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                            z"/>
+                       </svg>
+        </div>
+    </section>
+    <!-- end project-single-section -->
+
+
+
+    <!-- start project-single-section 6.0 -->
+    <section class="project-one-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-8">
+                    <div class="project-content">
+                        <div class="img-holder">
+                            <img src="{{ url_for('static',filename='images/medical-services/6.png') }}" alt>
+                        </div>
+                        <h2 class="title">Dermatological</h2>
+                        <p>Pets are easily infected with skin diseases, including bacterial skin diseases, fungal skin
+                            diseases, mites and other skin parasitic infections, allergic skin diseases, keratosis and
+                            seborrheic skin diseases, autoimmune skin
+                            diseases, endocrine skin diseases, congenital and acquired depilation, pigmentation
+                            abnormalities and other complex and stubborn skin diseases. Healing Paws professional doctor
+                            checks the systemic skin of general dogs and
+                            cats Disease examination includes flea comb, transparent tape, hair plucking, scraping
+                            smear, scraping smear staining, wood's lamp, fine needle aspiration, bacterial or fungal
+                            culture, skin biopsy, allergy examination and
+                            hematology examination, so as to accurately make treatment plan for hair children and
+                            restore health.
+                        </p>
+                    </div>
+                </div>
+                <div class="col col-md-4">
+                    <div class="service-sidebar">
+                        <div class="widget project-info-widget">
+                            <h3 class="title">Department Information</h3>
+                            <ul>
+                                <li><span>Department Name: </span> Dermatological</li>
+                                <li><span>Department Head: </span> Dr Chen GuoZhen</li>
+                                <li><span>Date of Establishment: </span> 2019/4/6</li>
+                                <li><span>Department Value:</span> Best service for pets</li>
+                                <li><span>Services: </span> Provide diagnosis and treatment services for pets with skin diseases</li>
+                                <li><span>Customer Satisfaction: </span> Over 90%</li>
+                                <!-- <li><span>live link : </span> <a href="#">http://demo.com</a> </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                        <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                            z"/>
+                       </svg>
+        </div>
+    </section>
+    <!-- end project-single-section -->
+{% endblock %}

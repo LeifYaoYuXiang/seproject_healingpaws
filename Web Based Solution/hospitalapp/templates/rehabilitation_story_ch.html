@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block login %}
+    <li><a href="{{ url_for('index_ch') }}">主页</a></li>
+    <li><a href="{{ url_for('about_ch') }}">关于我们</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">医疗团队</a></li>
+    <li><a href="{{ url_for('treatment_services_ch') }}">医疗服务</a></li>
+    <li><a href="{{ url_for('rehabilitation_story_ch') }}">康复故事</a></li>
+    <li><a href="{{ url_for('retail_store') }}">线下诊所</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">线上商店</a></li>
+
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">退出登录</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">登录/注册</a></li>
+    {% endif %}
+
+{% endblock %}
+
+{% block mainContent %}
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+
+    <!-- .breadcumb-area start -->
+        <div class="breadcumb-area-story">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcumb-wrap text-center">
+                            <h2>康复故事</h2>
+                            <ul>
+                                <li>主页</li>
+                                <li><span>康复故事</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .breadcumb-area end -->
+
+
+        <!-- start about-section 1.0 -->
+        <section class="about-section-s2">
+            <div class="content-area">
+                <div class="left-content">
+                    <img src="{{url_for('static',filename='images/story/img_story_2.jpg')}}" alt>
+                </div>
+                <div class="right-content">
+                    <div class="about-content">
+                        <div class="section-title-s2">
+                            <span>尼莫:</span>
+                            <h2>我恢复了自由奔跑的能力。</h2>
+                        </div>
+                        <div class="details">
+                            <p>一个多月前，狗尼莫突然走不动了。
+                                他的主人立即带他去医院检查。他从济南飞到北京，去了几家医院接受治疗、注射和治疗。
+                                但半个月后，尼莫还是不能走路，他的症状也没有好转。
+                                尼莫英俊的背上背着一个包。生化检查显示Nemo有贫血、肝功能异常和肝功能衰竭。
+                            </p>
+                            <p>我们的主治医生亲自为尼莫做了成功的手术。
+                                术后，医院24小时监测尼莫的身体状况，并进行健身球运动；针灸、冲击波疗法“spa”。
+                                在多哥宠物医院接受一段时间的治疗后，尼莫的情绪和身体一天天好转。恢复了往日的辉煌。 </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ab-svg_color">
+                <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#f8f8f8" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+            </div>
+        </section>
+        <!-- end about-section -->
+
+        <!-- start about-section 2.0 -->
+        <section class="about-section-s2">
+            <div class="content-area">
+                <div class="left-content">
+                    <img src="{{url_for('static',filename='images/story/img_story_1.jpg')}}" alt>
+                </div>
+                <div class="right-content">
+                    <div class="about-content">
+                        <div class="section-title-s2">
+                            <span>幸运：</span>
+                            <h2>淘气的幸运和“幸运”的幸运</h2>
+                        </div>
+                        <div class="details">
+                            <p>
+                               幸运的小科吉，虽然只有六个月大，却是一个真正的“混血恶魔”。
+                                在家里，他活得像只兔子，活得像拆迁队的领队，连家里40公斤重的大狗都要屈服。
+                                在与阿拉斯加的一次追逐中，幸运的头不小心撞到了车上。事故发生后，店主发现lucky站不起来，瘫痪了。形势非常危急。
+                            </p>
+                            <p>
+                                经MRI检查，医生发现颈椎（C1图谱）内有疑似骨碎片嵌入，结合主诉和临床检查，
+                                医生初步诊断幸运为脊髓挫伤所致。
+                                在与幸运的主人沟通后，医生决定对幸运的脖子进行腹侧开槽手术。
+                                在手术中，中医学生成功地从地图集中取出了几块小骨头碎片。
+                                手术后的第六天，拉奇能够自己站起来，他的饮食和饮水基本恢复正常，他又回到了魔王身边。就在拐角处！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ab-svg_color">
+                <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#f8f8f8" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+            </div>
+        </section>
+        <!-- end about-section -->
+
+{% endblock %}

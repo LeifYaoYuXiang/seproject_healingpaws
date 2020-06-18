@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block login %}
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('about') }}">About Us</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">Therapy Team</a></li>
+    <li><a href="{{ url_for('treatment_services') }}">Treatment Service</a></li>
+    <li><a href="{{ url_for('rehabilitation_story') }}">Rehabilitation story</a></li>
+    <li><a href="{{ url_for('retail_store') }}">Retail Store</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">Online Shop</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">Login/SignUp</a></li>
+    {% endif %}
+{% endblock %}
+
+{% macro appointment(petname,year,month,date,symptom,state,id) %}
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="service-section" >
+            <div class="services-wrapper">
+                <div class="contact-details">
+                    <h5>Pet Name: <a href="{{ url_for('appointment_detail',id=id) }}" class="product-name">{{ petname }}</a></h5>
+                    <br>
+                    Date: <b>{{ year }}/{{ month }}/{{ date }}</b>
+                    <br>
+                    Symptom: <b>{{ symptom }}</b>
+                    <br>
+                    <b>{{ state }}</b>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endmacro %}
+
+{% block mainContent %}
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+    <div class="breadcumb-area-appointment">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcumb-wrap text-center">
+                        <h2>Appointment</h2>
+                        <ul>
+                            <li><a href="{{ url_for('index') }}">Home</a></li>
+                            <li><span>Appointment</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .breadcumb-area end -->
+    <section class="contact-pg-contact-section section-padding">
+        <div class="container">
+            <div class="col" style="line-height: 32px;">
+                <div>
+                    <div class="col col-md-6">
+                        <div class="contact-form-area">
+                            <div class="section-title-s3 section-title-s5">
+                                <h2>New Appointment</h2>
+                            </div>
+                            <div class="contact-form">
+                                <form action="" method="post" novalidate>
+                                    {{ form.hidden_tag() }}
+                                    <div style="clear:left">
+                                        {{ form.pet.label }}
+                                        {{ form.pet(class="form-control")}}
+                                        {% for error in form.pet.errors %}
+                                        <span style="color: red">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </div>
+                                    <br>
+                                    <div style="clear:left">
+                                        {{ form.service.label }}
+                                        {{ form.service(class="form-control") }}
+                                        {% for error in form.service.errors %}
+                                        <span style="color: red">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </div>
+                                    <div style="clear:left">
+                                        {{ form.city.label }}
+                                        {{ form.city(class="form-control") }}
+                                        {% for error in form.city.errors %}
+                                        <span style="color: red">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </div>
+                                    <div style="clear:left">
+                                         {{ form.symptom.label }}
+                                         {{ form.symptom(style="background-color: white; border: #737357 1px solid") }}
+                                         {% for error in form.symptom.errors %}
+                                        <span style="color: red">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </div>
+                                    <div style="clear:left">
+                                        {{ form.submit(class="btn btn-primary block full-width m-b") }}
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-6">
+                        <div class="service-sidebar">
+                            <div class="widget all-services">
+                                <h3>Personal domain</h3>
+                                <ul>
+                                    <li><a href="{{ url_for('personal_information') }}">Personal Information</a></li>
+                                    <li><a href="{{ url_for('appointment') }}">Appointment</a></li>
+                                    <li><a href="{{ url_for('message_square') }}">Message Square</a></li>
+                                </ul>
+                            </div>
+                            <br><br><br><br><br><br>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col">
+                <h2>My Appointments</h2>
+                <br>
+                {% for app in aapps %}
+                    {{ appointment(app.petname,app.year,app.month,app.date,app.symptom,app.state,app.id) }}
+                {% endfor %}
+            </div>
+
+
+        </div>
+
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px"
+                 viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+        </div>
+    </section>
+{#    <script>#}
+{#    function Delete() {#}
+{#        $.ajax({#}
+{#            url: "http://127.0.0.1:5000/appointment",#}
+{#            type: 'post',#}
+{#            data: {#}
+{#                name: 'Kevin'#}
+{#            },#}
+{#            success: function (data) {#}
+{#                console.log(data);#}
+{#            }#}
+{#        });#}
+{#    }#}
+{#    </script>#}
+{% endblock %}

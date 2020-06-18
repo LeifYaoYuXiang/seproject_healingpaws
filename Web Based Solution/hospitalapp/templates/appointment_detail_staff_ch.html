@@ -1,0 +1,190 @@
+{% extends 'staff_base.html' %}
+{% block staff_name%}
+    工作人员名称: {{ username }}
+{% endblock %}
+{% block navbar %}
+    <li>
+        <a href="{{ url_for('staff_ch') }}"><i class="fa fa-th-large"></i> <span class="nav-label">主页</span></a>
+    </li>
+    <li>
+        <a href="{{ url_for('mailbox') }}"><i class="fa fa-envelope"></i> <span class="nav-label">邮件</span></a>
+    </li>
+{% endblock %}
+{% macro state_step_one(year, month, date, description) %}
+    <div class="vertical-timeline-block">
+        <div class="vertical-timeline-icon navy-bg">
+            <i class="fa fa-spinner text-info"></i>
+        </div>
+        <div class="vertical-timeline-content">
+            <h2>状态 1: 等待</h2>
+            <p>{{ description }}</p>
+            <span class="vertical-date">{{ year }}<br/>
+                <small>{{ month }}/{{ date }}</small>
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro state_step_two(year, month, date, description) %}
+    <div class="vertical-timeline-block">
+        <div class="vertical-timeline-icon navy-bg">
+            <i class="fa fa-edit text-warning"></i>
+        </div>
+        <div class="vertical-timeline-content">
+            <h2>状态 2: 治疗</h2>
+            <p>{{ description }}</p>
+            <span class="vertical-date">{{ year }}<br/>
+                <small>{{ month }}/{{ date }}</small>
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro state_step_three(year, month, date, description) %}
+    <div class="vertical-timeline-block">
+        <div class="vertical-timeline-icon navy-bg">
+            <i class="fa fa-angellist text-success"></i>
+        </div>
+        <div class="vertical-timeline-content">
+            <h2>状态 3: 康复</h2>
+            <p>{{ description }}</p>
+            <span class="vertical-date">{{ year }}<br/>
+                <small>{{ month }}/{{ date }}</small>
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+
+
+{% block mainContent %}
+    <div class="wrapper wrapper-content">
+        <div class="row animated fadeInRight">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+
+                    <div class="ibox-content" id="ibox-content">
+
+                        <div id="vertical-timeline" class="vertical-container dark-timeline center-orientation">
+                            {{ state_step_one(state_one_year,state_one_month,state_one_date,symptom) }}
+                            {% if state == '2' %}
+                                {{ state_step_two(state_two_year,
+                                                   state_two_month,
+                                                   state_two_date,
+                                                   state_two_description) }}
+                            {% elif state == '3' %}
+
+                                {{ state_step_two(state_two_year,
+                                                    state_two_month,
+                                                    state_two_date,
+                                                    state_two_description) }}
+                                {{ state_step_three(state_three_year,
+                                                    state_three_month,
+                                                    state_three_date,
+                                                    state_three_description) }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>宠物信息<small></small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="modal-body">
+                            <form method="get" class="form-horizontal">
+                                <div class="form-group"><label class="col-sm-2 control-label">预约ID</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ id }}"></div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">顾客名</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ customer_name }}"></div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">宠物名</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ pet_name }}">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">症状</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ symptom }}">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">城市</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"
+                                                                  disabled=""
+                                                                  placeholder="{{ city }}">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                            </form>
+                        </div>
+                        {% if state != '3' %}
+                            <div class="text-center">
+                                <a data-toggle="modal" class="btn btn-primary" href="#modal-form">改变状态</a>
+                            </div>
+                            <div id="modal-form" class="modal fade" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <form class="form-horizontal" action="" method="post" novalidate>
+                                                {{ form.hidden_tag() }}
+                                                <div class="form-group"><label class="col-sm-2 control-label">描述</label>
+                                                <div class="col-sm-10">
+                                                    {{ form.description(class="form-control") }}
+                                                    <div class="hr-line-dashed"></div>
+
+                                                    <label> 拍摄视频的URL</label>
+                                                    <br/>
+                                                    你可以拍摄一段这只宠物的视频并上传到youtube上。
+                                                    上传后，你的视频将有自己的网址。
+                                                    例如，促销视频的URL为 <a href="https://www.youtube.com/watch?v=qrD5SyYb1Ck">"https://www.youtube.com/watch?v=<b>qrD5SyYb1Ck</b>"</a>
+                                                    您可以将<b>qrD5SyYb1Ck</b> 放入以下空白处，以便客户可以在其页面上看到视频。<br>
+                                                    建议空白的默认值为 <b>qrD5SyYb1Ck</b>
+                                                    {{ form.url(class="form-control") }}
+                                                    <div class="hr-line-dashed"></div>
+
+                                                    <div class="col-sm-4 col-sm-offset-4">
+                                                        {{ form.submit(class="btn btn-primary") }}
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="text-center">
+                                <a data-toggle="modal" class="btn btn-primary" href="#modal-form" disabled="">改变状态</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HPs | 登录</title>
+
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-3.3.4.css">
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link href="{{ url_for('static',filename='css/staff_base/plugins/iCheck/custom.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/staff_base/animate.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/staff_base/style.css') }}" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+<div class="middle-box text-center loginscreen   animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name">HPs</h1>
+
+        </div>
+        <h3>注册到 HPs</h3>
+        <p>重新定义每一个小生命的尊严和价值，以保护爱和感情。</p>
+        {% for message in get_flashed_messages() %}
+        <p style="color: red; font-size: 13px; text-align: center">[{{ message }}]</p>
+        {% endfor %}
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.username(class="form-control",size=32) }}
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.email(class="form-control",size=32) }}
+                {% for error in form.email.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.password(class="form-control",size=32) }}
+                {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <P>{{ form.submit(class="btn btn-primary block full-width m-b") }}</P>
+        </form>
+        <p class="text-muted text-center"><small>已经有了属于您的账户？</small></p>
+        <a class="btn btn-sm btn-white btn-block" href="{{ url_for('login') }}">登录</a>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="{{ url_for('static',filename='js/staff_base/jquery-2.1.1.js') }}"></script>
+<script src="{{ url_for('static',filename='js/staff_base/bootstrap.min.js') }}"></script>
+<!-- iCheck -->
+<script src="{{ url_for('static',filename='js/staff_base/plugins/iCheck/icheck.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+</script>
+</body>
+
+</html>

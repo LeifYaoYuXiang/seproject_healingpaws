@@ -1,0 +1,166 @@
+{% extends "staff_base.html" %}
+{% block staff_name %}
+    工作人员名称: {{ username }}
+{% endblock %}
+
+{% block navbar %}
+    <li>
+        <a href="{{ url_for('staff_ch') }}"><i class="fa fa-th-large"></i> <span class="nav-label">主页</span></a>
+    </li>
+    <li>
+        <a href="{{ url_for('mailbox') }}"><i class="fa fa-envelope"></i> <span class="nav-label">邮件</span></a>
+    </li>
+{% endblock %}
+
+{% macro appointment_detail(id,customer_name,pet_name,symptom,status,state,year,month,date) %}
+    <tr>
+        <td>{{ id }}</td>
+        <td><a href="{{ url_for('appointment_detail_staff',id=id) }}">{{ pet_name }}</a></td>
+        <td>{{ customer_name }}</td>
+        <td>{{ status }}</td>
+        <td>{{ month }} {{ date }}, {{ year }}</td>
+        <td>{{ symptom }}</td>
+        <td><strong>State: {{ state }}</strong></td>
+        {% if state == 1 %}
+            <td><i class="fa fa-exclamation text-danger"></i></td>
+        {% elif state ==2 %}
+            <td><i class="fa fa-dot-circle-o text-warning"></i></td>
+        {% else %}
+            <td><i class="fa fa-check text-navy"></i></td>
+        {% endif %}
+    </tr>
+{% endmacro %}
+
+{% macro pet_detail(pet_id,customer_name,pet_name,type,age,breed) %}
+    <tr>
+        <td>{{ pet_id }}</td>
+        <td><a href="{{ url_for('staff_petinfo',id=pet_id) }}">{{ pet_name }}</a></td>
+        <td>{{ customer_name }}</td>
+        <td>{{ type }}</td>
+        <td>{{ age }}</td>
+        <td>{{ breed }}</td>
+    </tr>
+{% endmacro %}
+
+{% block mainContent %}
+    <div class="row  border-bottom white-bg dashboard-header">
+        <div class="col-sm-3">
+            <h2>我们的口号是：</h2>
+            <ul class="list-group clear-list m-t">
+                <li class="list-group-item fist-item">
+                    <span class="label label-success">1</span>好的服务=高效率
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-info">2</span>锋利的策略
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-primary">3</span>专注=成功
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-default">4</span>诚实守信.
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-primary">5</span>创新发展.
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <div class="flot-chart dashboard-chart">
+                <div class="flot-chart-content" id="flot-dashboard-chart"></div>
+            </div>
+            <h3>最近7天预约信息</h3>
+            <div class="row text-left">
+                <div class="col-xs-4">
+                    <div class=" m-l-md">
+                        <span class="h4 font-bold m-t block">{{ num0e }}</span>
+                        <small class="text-muted m-b block">Today <br/>急救</small>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <span class="h4 font-bold m-t block">{{ num0s }}</span>
+                    <small class="text-muted m-b block">Today <br/>标准</small>
+                </div>
+                <div class="col-xs-4">
+                    <span class="h4 font-bold m-t block">{{ unread }} </span>
+                    <small class="text-muted m-b block">Today <br/>信息</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="statistic-box">
+                <h4>Statistics</h4>
+                <div class="row text-center">
+                    <div class="col-lg-6">
+                        <canvas id="polarChart" width="80" height="80"></canvas>
+                        <h5>狗与猫</h5>
+                    </div>
+                    <div class="col-lg-6">
+                        <canvas id="doughnutChart" width="78" height="78"></canvas>
+                        <h5>紧急与标准</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <h5>预约信息</h5>
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <td>id</td>
+                                <td>宠物名</td>
+                                <td>客户名</td>
+                                <td>预约类型</td>
+                                <td>预约时间</td>
+                                <td>症状</td>
+                                <td>状态</td>
+                                <td></td>
+                            </tr>
+                            {% for appointment in appointments_array %}
+                                {{ appointment_detail(
+                                            appointment.id,
+                                            appointment.customer_name,
+                                            appointment.pet_name,
+                                            appointment.symptom,
+                                            appointment.status,
+                                            appointment.state,
+                                            appointment.year,
+                                            appointment.month,
+                                            appointment.date) }}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <h5>宠物信息</h5>
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <td>id</td>
+                                <td>宠物名称</td>
+                                <td>用户名称</td>
+                                <td>宠物的类型</td>
+                                <td>年级</td>
+                                <td>品种</td>
+                            </tr>
+                            {% for pet in pets_array %}
+                                {{ pet_detail(
+                                            pet.pet_id,
+                                            pet.customer_name,
+                                            pet.pet_name,
+                                            pet.type,
+                                            pet.age,
+                                            pet.breed) }}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

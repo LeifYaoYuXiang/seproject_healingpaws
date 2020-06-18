@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>HealingPawsDashboard</title>
+
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-3.3.4.css">
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/font-awesome.4.6.0.css">
+
+    <!-- Toastr style -->
+    <link href="{{ url_for('static',filename='css/staff_base/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="{{ url_for('static',filename='js/staff_base/plugins/gritter/jquery.gritter.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static',filename='css/staff_base/animate.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/staff_base/style.css') }}" rel="stylesheet">
+
+    <style type="text/css">
+        .alertceng{
+            background: #FFFFFF;
+            padding: 10px;
+            display: none;
+        }
+        .alertceng span.title{
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element"> <span>
+                             </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">
+                                {% block staff_name%}
+
+                                {% endblock %}
+                            </strong>
+                             </span>
+                            </span>
+                            </a>
+                        </div>
+                    </li>
+                    {% block navbar %}
+                        <li>
+                            <a href="{{ url_for('staff') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Main Page</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('mailbox') }}"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox</span></a>
+                        </li>
+                    {% endblock %}
+
+                </ul>
+            </div>
+        </nav>
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li><span class="m-r-sm text-muted welcome-message">
+                            <a href="{{ url_for('staff_ch') }}">中</a>
+                            <a href="{{ url_for('staff') }}">En</a>
+                        </span></li>
+                        <li><a href="{{ url_for('logout') }}"><i class="fa fa-sign-out"></i> Log out </a></li></ul>
+                </nav>
+            </div>
+            {% block mainContent %}
+
+            {% endblock %}
+        </div>
+    </div>
+
+    <script src="{{ url_for('static',filename='js/staff_base/jquery-2.1.1.js') }}"></script>
+    <script src="{{ url_for('static',filename='js//staff_base/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/staff_base/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/staff_base/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+
+    <!-- Flot -->
+    <script src="{{ url_for('static',filename='js/staff_base/plugins/flot/jquery.flot.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/staff_base/plugins/flot/jquery.flot.tooltip.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/staff_base/plugins/flot/jquery.flot.spline.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/staff_base/plugins/flot/jquery.flot.resize.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/staff_base/plugins/flot/jquery.flot.pie.js') }}"></script>
+    <!-- Peity -->
+    <script src="{{ url_for('static',filename='js/staff_base/plugins/peity/jquery.peity.min.js') }}"></script>
+    <script src=""{{ url_for('static',filename='js/staff_base/demo/peity-demo.js') }}></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{{ url_for('static',filename='js/staff_base/inspinia.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/staff_base/plugins/pace/pace.min.js') }}"></script>
+
+    <!-- jQuery UI -->
+    <script src="https://www.jq22.com/jquery/jquery-ui-1.11.0.js"></script>
+
+    <!-- GITTER -->
+    <script src="{{ url_for('static',filename='js/staff_base/plugins/gritter/jquery.gritter.min.js') }}"></script>
+
+    <!-- Sparkline -->
+    <script src="{{ url_for('static',filename='js/staff_base/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="{{ url_for('static',filename='js/staff_base/demo/sparkline-demo.js') }}"></script>
+
+   I <!-- ChartJS-->
+    <script src="{{ url_for('static',filename='js/staff_base/plugins/chartJs/Chart.min.js') }}"></script>
+
+    <!-- Toastr -->
+    <script src="{{ url_for('static',filename='js/staff_base/plugins/toastr/toastr.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Welcome to Healing Paws');
+
+            }, 1300);
+
+            num0e={{ num0e }}
+                num0s={{ num0s }}
+            num1e={{ num1e }}
+                num1s={{ num1s }}
+            num2e={{ num2e }}
+                num2s={{ num2s }}
+            num3e={{ num3e }}
+                num3s={{ num3s }}
+            num4e={{ num4e }}
+                num4s={{ num4s }}
+            num5e={{ num5e }}
+                num5s={{ num5s }}
+            num6e={{ num6e }}
+                num6s={{ num6s }}
+
+            var data1 = [
+                [1,num0e],[2,num1e],[3,num2e],[4,num3e],[5,num4e],[6,num5e], [7,num6e]
+            ];
+            var data2 = [
+                [1,num0s],[2,num1s],[3,num2s],[4,num3s],[5,num4s],[6,num5s],[7,num6s]
+            ];
+            $("#flot-dashboard-chart").length && $.plot($("#flot-dashboard-chart"), [
+                data1, data2
+            ],
+                    {
+                        series: {
+                            lines: {
+                                show: false,
+                                fill: true
+                            },
+                            splines: {
+                                show: true,
+                                tension: 0.4,
+                                lineWidth: 1,
+                                fill: 0.4
+                            },
+                            points: {
+                                radius: 0,
+                                show: true
+                            },
+                            shadowSize: 2
+                        },
+                        grid: {
+                            hoverable: true,
+                            clickable: true,
+                            tickColor: "#d5d5d5",
+                            borderWidth: 1,
+                            color: '#d5d5d5'
+                        },
+                        colors: ["#1ab394", "#1C84C6"],
+                        xaxis:{
+                        },
+                        yaxis: {
+                            ticks: 4
+                        },
+                        tooltip: false
+                    }
+            );
+            em={{ em }}
+            st={{ st }}
+            var doughnutData = [
+                {
+                    value: em,
+                    color: "#a3e1d4",
+                    highlight: "#1ab394",
+                    label: "Emergency"
+                },
+                {
+                    value: st,
+                    color: "#dedede",
+                    highlight: "#1ab394",
+                    label: "Standard"
+                },
+            ];
+
+            var doughnutOptions = {
+                segmentShowStroke: true,
+                segmentStrokeColor: "#fff",
+                segmentStrokeWidth: 2,
+                percentageInnerCutout: 45, // This is 0 for Pie charts
+                animationSteps: 100,
+                animationEasing: "easeOutBounce",
+                animateRotate: true,
+                animateScale: false
+            };
+
+            var ctx = document.getElementById("doughnutChart").getContext("2d");
+            var DoughnutChart = new Chart(ctx).Doughnut(doughnutData, doughnutOptions);
+            dogs={{ dog }}
+            cats={{ cat }}
+            var polarData = [
+                {
+                    value: dogs,
+                    color: "#a3e1d4",
+                    highlight: "#1ab394",
+                    label: "Dogs"
+                },
+                {
+                    value: cats,
+                    color: "#dedede",
+                    highlight: "#1ab394",
+                    label: "Cats"
+                }
+            ];
+
+            var polarOptions = {
+                scaleShowLabelBackdrop: true,
+                scaleBackdropColor: "rgba(255,255,255,0.75)",
+                scaleBeginAtZero: true,
+                scaleBackdropPaddingY: 1,
+                scaleBackdropPaddingX: 1,
+                scaleShowLine: true,
+                segmentShowStroke: true,
+                segmentStrokeColor: "#fff",
+                segmentStrokeWidth: 2,
+                animationSteps: 100,
+                animationEasing: "easeOutBounce",
+                animateRotate: true,
+                animateScale: false
+            };
+            var ctx = document.getElementById("polarChart").getContext("2d");
+            var Polarchart = new Chart(ctx).PolarArea(polarData, polarOptions);
+        });
+    </script>
+</body>
+</html>

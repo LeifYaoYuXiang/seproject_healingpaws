@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% block login %}
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('about') }}">About Us</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">Therapy Team</a></li>
+    <li><a href="{{ url_for('treatment_services') }}">Treatment Service</a></li>
+    <li><a href="{{ url_for('rehabilitation_story') }}">Rehabilitation story</a></li>
+    <li><a href="{{ url_for('retail_store') }}">Retail Store</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">Online Shop</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">Login/SignUp</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block mainContent %}
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+	 <div class="breadcumb-area-about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcumb-wrap text-center">
+                            <h2 style="color: black">About Us</h2>
+                            <ul>
+                                <li>Home</li>
+                                <li style="color: forestgreen;"><span>About Us</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+     </div>
+
+    <!-- bradcam_area_end -->
+
+    <!-- pet_care_area_start  -->
+    <div class="pet_care_area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-6">
+                    <div class="pet_thumb">
+                        <img src="{{url_for('static',filename='images/about/pet_care.png')}}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1 col-md-6">
+                    <div class="pet_info">
+                        <div class="section_title">
+                            <h1 class="a-title"><span>We care your pet </span> <br>
+                                As you care</h1>
+                             <div class="content">When your pet is sick or out of condition, <b><i>Healing Paws</i></b> is your reliable choice.
+                                Don't worry about your pet not getting good care, let alone worry about your pet's inability to get timely treatment because of its complicated illness.
+                            In line with the tenet of "being rigorous and reassuring", we have decades of experience in pet industry management and operation, take pets as family members, provide comprehensive, scientific and transparent medical services for pet, and redefine the dignity and value of each small life. Our services cover many fields such as professional animal medical diagnosis and treatment, pet basic immunity and insect repellent, physical examination and health care, health and beauty, etc. with the care of "family", we will make the services intimate and professional, and provide the pet with human-oriented and high-quality health service experience.
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- pet_care_area_end  -->
+
+    <!-- adapt_area_start  -->
+    <div class="adapt_area">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-5">
+                    <div class="adapt_help">
+                        <div class="section_title">
+                            <h1 class="a-title"><span>We have enough resources</span>
+                                <hr>
+                                could help your pets a lot</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="adapt_about">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single_adapt text-center">
+                                    <img src="{{url_for('static',filename='images/adapt_icon/1.png')}}" alt="">
+                                    <div class="grid">
+                                <div>
+                                    <h2><span class="odometer" data-count="132">00</span>+</h2>
+                                </div>
+                                <h2>Nutritious Food Available</h2>
+                            </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single_adapt text-center">
+                                    <img src="{{url_for('static',filename='images/adapt_icon/3.png')}}" alt="">
+                                     <div class="grid">
+                                <div>
+                                    <h2><span class="odometer" data-count="50">00</span>+</h2>
+                                </div>
+                                <h2>Equipments Available</h2>
+                                </div>
+                                <div class="single_adapt text-center">
+                                    <img src="{{url_for('static',filename='images/adapt_icon/2.png')}}" alt="">
+                                     <div class="grid">
+                                <div>
+                                    <h2><span class="odometer" data-count="100">00</span>+</h2>
+                                </div>
+                                <h2>Vets Available</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- adapt_area_end  -->
+
+    <!-- team_area_start  -->
+    <div class="team_area">
+        <div class="container">
+            <div class="row justify-content-center ">
+                <div class="col-lg-6 col-md-10">
+                    <div class="section_title text-center mb-95">
+                        <h1 class="a-title">Our Resources</h1>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_team">
+                        <div class="thumb">
+                            <img src="{{url_for('static',filename='images/about/home.png')}}" alt="">
+                        </div>
+                        <div class="member_name text-center">
+                            <div class="mamber_inner" >
+                                <h2 class="a-title">RECEIVE HONOR</h2>
+                                <p class="content">Warm and comfortable environment like home.Clean and disinfect the room regularly and do a good job of daily protection. Because our care and profession, <b><i>Healing Paws have received many honors: </i></b></p>
+                                <p class="content"><ul class="content">
+                                <ol>Excellent Employer Of The Year in China</ol>
+                                <ol>Excellent Pet Medical Unit in Asia</ol>
+                                <ol>Excellent Public Welfare Partner</ol>
+                                <ol>Excellent Pet Store</ol>
+                            </ul></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_team">
+                        <div class="thumb">
+                            <img src="{{url_for('static',filename='images/about/care.png')}}" >
+                        </div>
+                        <div class="member_name text-center">
+                            <div class="mamber_inner">
+                                <h2 class="a-title">CARE AND TREATMENT</h2>
+                                <p class="content"><b><i>Healing paws</i></b> introduces international advanced pet medical equipment, such as MRI, MRI, CT, Moller operating microscope, Drager breathing anesthesia machine for small animals in Germany, yum's MyLab color ultrasound in Italy, technix suspended C-arm in Italy, etc. it is also equipped with a number of domestic rare 10000 level laminar flow purification operating rooms. Provide more acontenturate and safe scientific diagnosis for consumers' pet, and effectively guarantee the acontenturacy and sucontentess rate of treatment!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_team">
+                        <div class="thumb">
+                            <img src="{{url_for('static',filename='images/about/treatment.png')}}" alt="">
+                        </div>
+                        <div class="member_name text-center">
+                            <div class="mamber_inner">
+                                <h2 class="a-title">PROFESSIONAL MEDICAL TEAM</h2>
+                                <p class="content">The medical team is led by a medical expert committee composed of professors, deans and doctors. There are many young elite doctors with rich clinical experience and excellent medical skills. All doctors are required to work with certificates. The assistant veterinary doctors are graduated from animal medicine related majors</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+    <!-- team_area_start  -->
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block login %}
+    <li><a href="{{ url_for('index_ch') }}">主页</a></li>
+    <li><a href="{{ url_for('about_ch') }}">关于我们</a></li>
+    <li><a href="{{ url_for('therapy_team') }}">医疗团队</a></li>
+    <li><a href="{{ url_for('treatment_services') }}">医疗服务</a></li>
+    <li><a href="{{ url_for('rehabilitation_story') }}">康复故事</a></li>
+    <li><a href="{{ url_for('retail_store') }}">线下诊所</a></li>
+    <li><a href="{{ url_for('shopping_mall') }}">线上商店</a></li>
+    {% if username %}
+        <li><a href="{{ url_for('personal_information') }}">{{ username }}</a></li>
+        <li><a href="{{ url_for('logout') }}">退出登录</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">登录/注册</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block mainContent %}
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/responsive.css') }}" rel="stylesheet">
+<!-- .breadcumb-area start -->
+        <div class="breadcumb-area-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcumb-wrap text-center">
+                            <h2>线下诊所</h2>
+                            <ul>
+                                <li>主页</li>
+                                <li><span>线下诊所</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .breadcumb-area end -->
+
+        <!-- start blog-section -->
+        <section class="blog-section blog-section-3 bg-animate-shape">
+            <div class="ab-svg_color">
+                <svg x="0px" y="0px" viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#f8f8f8" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="section-title">
+                            <span>线下诊所</span>
+                            <h2>我们的诊所</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-12 recent-Blog-thumbs">
+                        <div class="recent-Blog-thumbs-outer">
+                            <div class="recent-blog-thumb active-thumb ct-m" data-case="#blog-content-1">
+                                <div class="img-holder">
+                                    <img src="{{url_for('static',filename='images/blog/1.png')}}" alt>
+                                </div>
+                                <div class="overlay-text">
+                                    <div class="text-inner">
+                                        <h3>北京</h3>
+                                        <h3>地址: 平乐园街道10号</h3>
+                                        <h3>电话: 86-186-1237-1721</h3>
+                                        <h3>邮箱: bdic@ucdconnect.ie</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recent-blog-thumb" data-case="#blog-content-2">
+                                <div class="img-holder">
+                                    <img src="{{url_for('static',filename='images/blog/2.jpg')}}" alt>
+                                </div>
+                                <div class="overlay-text">
+                                    <div class="text-inner">
+                                        <h3>成都</h3>
+                                        <h3>地址:熊猫街道15号</h3>
+                                        <h3>电话: 86-321-7654-1098</h3>
+                                        <h3>邮箱: ucdbdicbjut@qq.com</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="recent-blog-thumb ct-t" data-case="#blog-content-3">
+                                <div class="img-holder">
+                                    <img src="{{url_for('static',filename='images/blog/3.png')}}" alt>
+                                </div>
+                                <div class="overlay-text">
+                                    <div class="text-inner">
+                                        <h3>上海</h3>
+                                        <h3>地址: 50 LuJiaZui Street</h3>
+                                        <h3>电话: 86-123-4567-8910</h3>
+                                        <h3>邮箱: ucd@ucdconnect.ie</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-12 recent-Blog-content">
+                        <div class="recent-Blog-content-outer">
+                            <div class="recent-blog-data active-blog-data" id="blog-content-1">
+                                <h3><a href="#">北京分公司</a></h3>
+                                <p style="font-size: 16px;">自2017年11月1日起，北京市宠物Healing Paws诊疗中心正式24小时开放，保障宠物健康。
+                                    经过装修升级，医院现拥有各类专业诊疗仪器：莱卡显微镜、数字图像系统， 呼吸麻醉机、迈瑞B超机、血压计、生化分析仪等常规检测设备。
+                                    此外，医院实行信息化管理，对所有宠物建立宠物终身健康档案，定期开展健康工作 回访宠物。</p>
+                                <!-- <a href="#" class="theme-btn">Blog Details</a> -->
+                            </div>
+                            <div class="recent-blog-data" id="blog-content-2">
+                                <h3><a href="#">成都分公司</a></h3>
+                                <p style="font-size: 16px;">成都Healing Paws诊疗中心是西南地区首家具有国际先进水平的小型动物综合诊疗中心和转诊中心
+先进的医疗设备和专业的服务标准。医院流程科学严谨，诊疗环境
+舒适安全，猫狗分区域管理治疗，致力于提供全新的动物诊疗经验
+以及大规模的临床应用管理。同时，还承担了部分学生实习和兽医执业的培训工作
+农业学院。诊疗中心汇集了一批资深小动物医生会诊，提供国内专业临床
+为小动物提供诊疗服务，重新定义每一个小生命的尊严和价值。</p>
+                                <!-- <a href="#" class="theme-btn">Blog Details</a> -->
+                            </div>
+                            <div class="recent-blog-data" id="blog-content-3">
+                                <h3><a href="#">上海分公司</a></h3>
+                                <p style="font-size: 16px;">
+                                    上海Healing Paws诊疗中心不仅提供全方位的宠物健康诊疗服务，
+同时还重点发展了动物骨外科、神经外科等特色科室。
+为了更好地治疗骨科疾病，我们引进了各种诊疗设备，如C臂，
+超声骨刀、骨板系统、PrCl先进锁定骨板系统等。
+同时，我们还配备了上海市宠物医院罕见的磁共振成像设备。通过磁共振成像，医生可以更准确地检查宠物的病理器官，提高治疗的准确性。
+                                </p>
+                                <!-- <a href="#" class="theme-btn">Blog Details</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-t-lg">
+                    <div class="col-lg-12">
+                        <div class="ibox-content">
+                            <div id="world-map" style="height: 300px; width: 1150px; "></div>
+                        </div>
+                        <script src="https://webapi.amap.com/maps?v=1.4.15&key=cd81642023571a6269470c1784debfb9"></script>
+                        <script>
+                            //初始化地图
+                            var map = new AMap.Map('world-map', {
+                                resizeEnable: true, //是否监控地图容器尺寸变化
+                                mapStyle: "amap://styles/whitesmoke"
+                            });
+                        </script>
+                        <style>
+                            #container {
+                                width: 50%;
+                                height: 100%;
+                            }
+                        </style>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end blog-section -->
+
+{% endblock %}
